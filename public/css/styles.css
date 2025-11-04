@@ -89,6 +89,145 @@ h3 {
   color: #2d3748;
 }
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* ----------------------------------- */
+
+/* INPUT FORM STYLES */
+
+/* ------------------------------------- */
+
+#input-form-wrapper {
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #374151;
+  letter-spacing: -0.02em;
+  /* margin-bottom: 0.5rem; */
+}
+
+.form-select {
+  width: 100%;
+  font-size: 1.5rem;
+  height: 2.8rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-textarea {
+  width: 100%;
+  font-size: 1.5rem;
+  /* height: 10rem; */
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-textarea:hover,
+.form-select:hover {
+  border-color: #164388;
+  border-width: 3px;
+}
+
+.form-textarea:focus,
+.form-select:focus {
+  border-color: #164388;
+  border-width: 3px;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-textarea::placeholder {
+  color: #a0aec0;
+}
+
+.button-wrapper {
+  margin-top: 0.5rem;
+}
+
+#form-submit-button {
+  padding: 1rem;
+  color: #ffffff;
+  background: #1a5025;
+}
+
+#form-submit-button:hover {
+  background: #2f6047;
+}
+
+#form-submit-button:active {
+  background: #2f6047;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++ */
+
+/* -------------------------------------------------- */
+
+/* RETURN FORM STYLES */
+
+/* ----------------------------------------------------- */
+
+#return-wrapper {
+  max-width: 100%;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+#copy-paste-wrapper {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+#copy-paste-element {
+  background-color: #fafbfc;
+  padding: 1rem 3rem;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-radius: 8px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+#parse-data {
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+#copy-button {
+  margin: 0 auto;
+  width: 30%;
+}
+
 /* +++++++++++++++++++++++++++++++++++++++ */
 
 /* -------------------------------------------------- */
