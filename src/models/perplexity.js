@@ -15,8 +15,8 @@ export const runPerplexity = async (prompt) => {
   ];
 
   const params = {
-    model: "sonar",
-    // model: "sonar-deep-research",
+    // model: "sonar",
+    model: "sonar-deep-research",
     messages: messages,
     max_tokens: 500,
     search_recency_filter: "week",
