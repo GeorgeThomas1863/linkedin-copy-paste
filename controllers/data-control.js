@@ -1,4 +1,5 @@
 import CONFIG from "../config/config.js";
+import { runAI } from "../src/src.js";
 
 // import { runPerplexitySearch } from "../src/src.js";
 

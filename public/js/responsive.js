@@ -1,4 +1,4 @@
-import { runAuthSubmit, runPwToggle, runMainSubmit } from "./run.js";
+import { runAuthSubmit, runMainSubmit, runPwToggle, runPrettyToggle, runCopyReturnData } from "./run.js";
 
 const authElement = document.getElementById("auth-element");
 const displayElement = document.getElementById("display-element");
@@ -19,8 +19,8 @@ export const clickHandler = async (e) => {
   if (clickType === "submit-button") await runMainSubmit();
 
   if (clickType === "pwToggle") await runPwToggle();
-
-  //   if (clickType === "submit-button") await runSearchSubmit();
+  if (clickType === "make-pretty") await runPrettyToggle(clickId);
+  if (clickType === "copy-return-data") await runCopyReturnData();
 };
 
 export const keyHandler = async (e) => {
@@ -38,6 +38,20 @@ export const keyHandler = async (e) => {
   return true;
 };
 
+export const changeHandler = async (e) => {
+  e.preventDefault();
+  const changeElement = e.target;
+  const changeValue = changeElement.value;
+  const changeType = changeElement.getAttribute("data-label");
+
+  console.log("CHANGE HANDLER");
+  console.log(changeValue);
+
+  if (changeType === "post-type-select") await runPostTypeSelect(changeValue);
+
+  return true;
+};
+
 if (authElement) {
   authElement.addEventListener("click", clickHandler);
   authElement.addEventListener("keydown", keyHandler);
@@ -46,4 +60,5 @@ if (authElement) {
 if (displayElement) {
   displayElement.addEventListener("click", clickHandler);
   displayElement.addEventListener("keydown", keyHandler);
+  displayElement.addEventListener("change", changeHandler);
 }

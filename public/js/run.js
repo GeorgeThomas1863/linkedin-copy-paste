@@ -1,3 +1,4 @@
+import { buildReturnForm } from "./forms/return-form.js";
 import { sendToBack } from "./util/api-front.js";
 import { EYE_OPEN_SVG, EYE_CLOSED_SVG } from "./util/define-things.js";
 
@@ -51,5 +52,69 @@ export const runPwToggle = async () => {
 
   pwButton.innerHTML = EYE_CLOSED_SVG;
   pwInput.type = "password";
+  return true;
+};
+
+export const runPrettyToggle = async (clickId) => {
+  if (!clickId) return null;
+
+  const parseData = document.getElementById("parse-data");
+  if (!parseData) return null;
+
+  const makePrettyButton = document.getElementById("make-pretty-button");
+  const undoPrettyButton = document.getElementById("undo-pretty-button");
+  const currentFormat = parseData.innerHTML;
+
+  if (clickId === "make-pretty-button") {
+    // Make pretty
+    const prettyFormat = "<pre>" + JSON.stringify(JSON.parse(currentFormat), null, 2) + "</pre>";
+    parseData.innerHTML = prettyFormat;
+    parseData.style.fontSize = "0.8rem";
+
+    makePrettyButton.classList.add("hidden");
+    undoPrettyButton.classList.remove("hidden");
+    return true;
+  }
+
+  // Undo pretty
+  if (currentFormat.substring(0, 5) !== "<pre>") return null;
+
+  const undoPrettyFormat = currentFormat.substring(5, currentFormat.length - 6);
+  parseData.innerHTML = undoPrettyFormat;
+  parseData.style.fontSize = "1.2rem";
+
+  makePrettyButton.classList.remove("hidden");
+  undoPrettyButton.classList.add("hidden");
+  return true;
+};
+
+export const runCopyReturnData = async () => {
+  const copyPasteElement = document.getElementById("copy-paste-element");
+  if (!copyPasteElement) return null;
+
+  const copyText = copyPasteElement.innerHTML;
+  if (!copyText) return null;
+
+  await navigator.clipboard.writeText(copyText);
+  console.log("COPIED TO CLIPBOARD");
+  console.log(copyText);
+  return true;
+};
+
+//--------------------
+
+export const runPostTypeSelect = async (changeValue) => {
+  if (!changeValue) return null;
+  const userInputListItem = document.getElementById("user-input-list-item");
+  if (!userInputListItem) return null;
+
+  if (changeValue === "user-input") {
+    if (!userInputListItem.classList.contains("hidden")) return true;
+    userInputListItem.classList.remove("hidden");
+    return true;
+  }
+
+  if (userInputListItem.classList.contains("hidden")) return true;
+  userInputListItem.classList.add("hidden");
   return true;
 };

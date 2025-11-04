@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import CONFIG from "../config/config.js";
+import CONFIG from "../../config/config.js";
 
 const client = new OpenAI({
   apiKey: CONFIG.PERPLEXITY_API_KEY,

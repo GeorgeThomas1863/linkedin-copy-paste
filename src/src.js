@@ -1,4 +1,8 @@
-//build
+import { runPerplexity } from "./models/perplexity.js";
+// import { runChatGPT } from "./models/chatGPT.js";
+// import { runClaude } from "./models/claude.js";
+// import { runLocalLLM } from "./models/local.js";
+
 export const runAI = async (inputParams) => {
   if (!inputParams) return null;
   const { aiType } = inputParams;
