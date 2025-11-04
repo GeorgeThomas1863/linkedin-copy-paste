@@ -12,6 +12,27 @@ export const runAuthSubmit = async () => {
   return data;
 };
 
+export const runMainSubmit = async () => {
+  const submitRoute = await sendToBack({ route: "/get-backend-value-route", key: "submitRoute" });
+  if (!submitRoute) return null;
+
+  console.log("SUBMIT ROUTE");
+  console.log(submitRoute);
+
+  // const params = await buildMainParams();
+  // params.route = submitRoute;
+
+  // const data = await sendToBack(params);
+  // if (!data) return null;
+  // console.log("RETURN DATA");
+  // console.dir(data);
+
+  // await buildReturnForm(data);
+  // return data;
+};
+
+//------------------
+
 export const runPwToggle = async () => {
   const pwButton = document.querySelector(".password-toggle-btn");
   const pwInput = document.querySelector(".password-input");
