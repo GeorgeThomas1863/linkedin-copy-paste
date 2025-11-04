@@ -2,7 +2,7 @@ import express from "express";
 import requireAuth from "./auth-route.js";
 
 import { authControl } from "../controllers/auth-control.js";
-import { getBackendValueControl } from "../controllers/data-control.js";
+import { getBackendValueControl, submitControl } from "../controllers/data-control.js";
 import { displayMain, display404, display500, display401 } from "../controllers/display-control.js";
 
 import CONFIG from "../config/config.js";
@@ -18,7 +18,7 @@ router.post("/site-auth-route", authControl);
 router.post("/get-backend-value-route", requireAuth, getBackendValueControl);
 
 //submit
-// router.post(CONFIG.submitRoute, requireAuth, submitControl);
+router.post(CONFIG.submitRoute, requireAuth, submitControl);
 
 // //perplexity
 // router.post(perplexityRoute, requireAuth, perplexityControl);

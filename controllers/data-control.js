@@ -11,11 +11,11 @@ export const getBackendValueControl = async (req, res) => {
   return res.json(value);
 };
 
-// export const searchControl = async (req, res) => {
-//   const { query } = req.body;
+export const submitControl = async (req, res) => {
+  const inputParams = req.body;
 
-//   const data = await runPerplexitySearch(query);
-//   if (!data) return null;
+  const data = await runAI(inputParams);
+  if (!data) return res.json({ success: false, message: "Failed to run AI" });
 
-//   return res.json(data);
-// };
+  return res.json(data);
+};

@@ -16,19 +16,21 @@ export const runMainSubmit = async () => {
   const submitRoute = await sendToBack({ route: "/get-backend-value-route", key: "submitRoute" });
   if (!submitRoute) return null;
 
-  console.log("SUBMIT ROUTE");
-  console.log(submitRoute);
+  const params = {
+    route: submitRoute,
+    aiType: document.getElementById("ai-select-type").value,
+    model: document.getElementById("model-select-type").value,
+    postType: document.getElementById("post-type-select").value,
+    userInput: document.getElementById("user-input").value || null,
+  };
 
-  // const params = await buildMainParams();
-  // params.route = submitRoute;
+  const data = await sendToBack(params);
+  if (!data) return null;
+  console.log("RETURN DATA");
+  console.dir(data);
 
-  // const data = await sendToBack(params);
-  // if (!data) return null;
-  // console.log("RETURN DATA");
-  // console.dir(data);
-
-  // await buildReturnForm(data);
-  // return data;
+  await buildReturnForm(data);
+  return data;
 };
 
 //------------------
