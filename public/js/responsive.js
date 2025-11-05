@@ -1,4 +1,4 @@
-import { runAuthSubmit, runMainSubmit, runPwToggle, runPrettyToggle, runCopyReturnData } from "./run.js";
+import { runAuthSubmit, runMainSubmit, runPwToggle, runPrettyToggle, runCopyReturnData, runAITypeSelect, runPostTypeSelect } from "./run.js";
 
 const authElement = document.getElementById("auth-element");
 const displayElement = document.getElementById("display-element");
@@ -47,6 +47,8 @@ export const changeHandler = async (e) => {
   console.log("CHANGE HANDLER");
   console.log(changeValue);
 
+  if (changeType === "ai-type-select") await runAITypeSelect(changeValue);
+  // if (changeType === "model-type-select") await runModelTypeSelect(changeValue);
   if (changeType === "post-type-select") await runPostTypeSelect(changeValue);
 
   return true;

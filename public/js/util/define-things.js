@@ -12,3 +12,14 @@ export const EYE_OPEN_SVG = `
     <circle cx="12" cy="12" r="3" data-label="pwToggle"/>
   </svg>
 `;
+
+export const modelMap = {
+  perplexity: [
+    { value: "sonar-pro", text: "Sonar Pro" },
+    { value: "sonar", text: "Sonar" },
+    { value: "sonar-deep-research", text: "Sonar Deep Research" },
+  ],
+  chatgpt: [{ value: "gpt-5-nano", text: "GPT-5 Nano" }],
+  claude: [{ value: "claude-3-5-sonnet-20240620", text: "Claude 3.5 Sonnet 20240620" }],
+  "local-llm": [{ value: "local-llm", text: "Local LLM" }],
+};

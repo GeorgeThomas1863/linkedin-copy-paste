@@ -1,6 +1,6 @@
 import { buildReturnForm } from "./forms/return-form.js";
 import { sendToBack } from "./util/api-front.js";
-import { EYE_OPEN_SVG, EYE_CLOSED_SVG } from "./util/define-things.js";
+import { EYE_OPEN_SVG, EYE_CLOSED_SVG, modelMap } from "./util/define-things.js";
 
 export const runAuthSubmit = async () => {
   const authPwInput = document.getElementById("auth-pw-input");
@@ -102,6 +102,28 @@ export const runCopyReturnData = async () => {
 };
 
 //--------------------
+
+// export const runAITypeSelect = async (changeValue) => {}
+
+export const runAITypeSelect = async (changeValue) => {
+  if (!changeValue) return null;
+  const aiTypeSelect = document.getElementById("ai-type-select");
+  const modelValue = modelMap[aiTypeSelect.value];
+  console.log("MODEL VALUE");
+  console.log(modelValue);
+  const modelSelectType = document.getElementById("model-type-select");
+  if (!modelSelectType) return null;
+  modelSelectType.innerHTML = "";
+  for (let i = 0; i < modelValue.length; i++) {
+    const model = modelValue[i];
+    const option = document.createElement("option");
+    option.value = model.value;
+    option.textContent = model.text;
+    if (model.selected) option.selected = true;
+    modelSelectType.append(option);
+  }
+  return true;
+};
 
 export const runPostTypeSelect = async (changeValue) => {
   if (!changeValue) return null;

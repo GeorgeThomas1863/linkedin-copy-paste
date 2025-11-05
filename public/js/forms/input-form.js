@@ -19,13 +19,14 @@ export const buildSelectAIListItem = async () => {
   selectAIListItem.className = "form-list-item";
 
   const selectAILabel = document.createElement("label");
-  selectAILabel.setAttribute("for", "ai-select-type");
+  selectAILabel.setAttribute("for", "ai-type-select");
   selectAILabel.textContent = "Select AI";
   selectAILabel.className = "form-label";
 
   const aiSelectType = document.createElement("select");
-  aiSelectType.id = "ai-select-type";
+  aiSelectType.id = "ai-type-select";
   aiSelectType.className = "form-select";
+  aiSelectType.setAttribute("data-label", "ai-type-select");
 
   const optionArray = [
     { value: "perplexity", text: "Perplexity", selected: true },
@@ -55,13 +56,14 @@ export const buildSelectModelListItem = async () => {
   selectModelListItem.className = "form-list-item";
 
   const selectModelLabel = document.createElement("label");
-  selectModelLabel.setAttribute("for", "model-select-type");
   selectModelLabel.textContent = "Select Model";
   selectModelLabel.className = "form-label";
+  selectModelLabel.setAttribute("for", "model-type-select");
 
   const modelSelectType = document.createElement("select");
-  modelSelectType.id = "model-select-type";
+  modelSelectType.id = "model-type-select";
   modelSelectType.className = "form-select";
+  modelSelectType.setAttribute("data-label", "model-type-select");
 
   //default to perplexity models, change to others with js
   const optionArray = [
