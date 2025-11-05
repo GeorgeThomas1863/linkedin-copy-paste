@@ -6,8 +6,9 @@ const client = new OpenAI({
   baseURL: "https://api.perplexity.ai",
 });
 
-export const runPerplexity = async (prompt, model) => {
-  if (!prompt) return null;
+export const runPerplexity = async (inputParams) => {
+  const { prompt, model } = inputParams;
+  if (!prompt || !model) return null;
 
   const messages = [
     { role: "system", content: "You are a helpful assistant." },

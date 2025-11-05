@@ -1,7 +1,7 @@
 import { runPerplexity } from "./models/perplexity.js";
-// import { runChatGPT } from "./models/chatGPT.js";
-// import { runClaude } from "./models/claude.js";
-// import { runLocalLLM } from "./models/local.js";
+import { runChatGPT } from "./models/chatGPT.js";
+import { runClaude } from "./models/claude.js";
+import { runLocalLLM } from "./models/local.js";
 
 export const runAI = async (inputParams) => {
   if (!inputParams) return null;
@@ -14,10 +14,15 @@ export const runAI = async (inputParams) => {
   const prompt = await buildPrompt(inputParams);
   if (!prompt) return null;
 
-  if (aiType === "perplexity") return await runPerplexity(prompt, model);
-  if (aiType === "chatgpt") return await runChatGPT(prompt, model);
-  if (aiType === "claude") return await runClaude(prompt, model);
-  if (aiType === "local-llm") return await runLocalLLM(prompt, model);
+  const params = {
+    prompt: prompt,
+    model: model,
+  };
+
+  if (aiType === "perplexity") return await runPerplexity(params);
+  if (aiType === "chatgpt") return await runChatGPT(params);
+  if (aiType === "claude") return await runClaude(params);
+  if (aiType === "local-llm") return await runLocalLLM(params);
 
   return null;
 };
