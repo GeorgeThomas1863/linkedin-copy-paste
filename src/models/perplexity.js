@@ -6,7 +6,7 @@ const client = new OpenAI({
   baseURL: "https://api.perplexity.ai",
 });
 
-export const runPerplexity = async (prompt) => {
+export const runPerplexity = async (prompt, model) => {
   if (!prompt) return null;
 
   const messages = [
@@ -15,8 +15,7 @@ export const runPerplexity = async (prompt) => {
   ];
 
   const params = {
-    // model: "sonar",
-    model: "sonar-deep-research",
+    model: model,
     messages: messages,
     max_tokens: 500,
     search_recency_filter: "week",

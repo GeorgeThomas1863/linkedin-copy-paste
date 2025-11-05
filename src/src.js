@@ -5,7 +5,7 @@ import { runPerplexity } from "./models/perplexity.js";
 
 export const runAI = async (inputParams) => {
   if (!inputParams) return null;
-  const { aiType } = inputParams;
+  const { aiType, model } = inputParams;
 
   console.log("RUN AI BACKEND INPUT PARAMS");
   console.dir(inputParams);
@@ -14,10 +14,10 @@ export const runAI = async (inputParams) => {
   const prompt = await buildPrompt(inputParams);
   if (!prompt) return null;
 
-  // if (aiType === "perplexity") return await runPerplexity(prompt);
-  // if (aiType === "chatgpt") return await runChatGPT(prompt);
-  // if (aiType === "claude") return await runClaude(prompt);
-  // if (aiType === "local-llm") return await runLocalLLM(prompt);
+  if (aiType === "perplexity") return await runPerplexity(prompt, model);
+  if (aiType === "chatgpt") return await runChatGPT(prompt, model);
+  if (aiType === "claude") return await runClaude(prompt, model);
+  if (aiType === "local-llm") return await runLocalLLM(prompt, model);
 
   return null;
 };

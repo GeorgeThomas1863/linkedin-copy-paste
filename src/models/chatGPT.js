@@ -6,9 +6,9 @@ const client = new OpenAI({
   apiKey: CONFIG.OPENAI_API_KEY,
 });
 
-export const runChatGPT = async (prompt) => {
+export const runChatGPT = async (prompt, model) => {
   const response = await client.responses.create({
-    model: "gpt-5-nano",
+    model: model,
     tools: [{ type: "web_search" }],
     input: prompt,
   });

@@ -19,11 +19,14 @@ export const runMainSubmit = async () => {
 
   const params = {
     route: submitRoute,
-    aiType: document.getElementById("ai-select-type").value,
-    model: document.getElementById("model-select-type").value,
+    aiType: document.getElementById("ai-type-select").value,
+    model: document.getElementById("model-type-select").value,
     postType: document.getElementById("post-type-select").value,
     userInput: document.getElementById("user-input").value || null,
   };
+
+  console.log("MAIN SUBMIT PARAMS");
+  console.dir(params);
 
   const data = await sendToBack(params);
   if (!data) return null;
