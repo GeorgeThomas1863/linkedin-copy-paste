@@ -14,10 +14,10 @@ export const runAI = async (inputParams) => {
   const prompt = await buildPrompt(inputParams);
   if (!prompt) return null;
 
-  if (aiType === "perplexity") return await runPerplexity(prompt);
-  if (aiType === "chatgpt") return await runChatGPT(prompt);
-  if (aiType === "claude") return await runClaude(prompt);
-  if (aiType === "local-llm") return await runLocalLLM(prompt);
+  // if (aiType === "perplexity") return await runPerplexity(prompt);
+  // if (aiType === "chatgpt") return await runChatGPT(prompt);
+  // if (aiType === "claude") return await runClaude(prompt);
+  // if (aiType === "local-llm") return await runLocalLLM(prompt);
 
   return null;
 };
