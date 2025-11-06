@@ -3,7 +3,10 @@ import CONFIG from "../../config/config.js";
 
 const client = new OpenAI({
   apiKey: CONFIG.CLAUDE_API_KEY,
-  baseURL: "https://api.anthropic.com",
+  baseURL: "https://api.anthropic.com/v1",
+  defaultHeaders: {
+    "anthropic-version": "2023-06-01",
+  },
 });
 
 export const runClaude = async (inputParams) => {

@@ -19,6 +19,7 @@ export const runChatGPT = async (inputParams) => {
     tools: [{ type: "web_search" }],
     // input: "What is the capital of Uzbekistan?"
     input: prompt,
+    max_tokens: 500,
   });
 
   console.log("CHATGPT RESPONSE");
