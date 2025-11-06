@@ -10,6 +10,7 @@
   "author": "GeorgeThomas1863",
   "license": "ISC",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
     "axios": "^1.13.1",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
