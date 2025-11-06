@@ -16,14 +16,37 @@ export const runClaude = async (inputParams) => {
   console.log("CLAUDE PARAMS");
   console.dir(inputParams);
 
-  const res = await client.messages.create({
+  const messages = [
+    { role: "system", content: "You are a helpful assistant." },
+    { role: "user", content: prompt },
+  ];
+
+  const res = await client.chat.completions.create({
     model: model,
-    messages: prompt,
+    tools: [
+      {
+        name: "web_search",
+        description: "Searches the web for current information",
+        input_schema: {
+          type: "object",
+          properties: {
+            query: {
+              type: "string",
+              description: "The search query",
+            },
+          },
+          required: ["query"],
+        },
+      },
+    ],
+    messages: messages,
     max_tokens: 500,
   });
 
   console.log("CLAUDE RESPONSE");
   console.dir(res);
+  console.log("MESSAGE RESPONSE");
+  console.log(res.choices[0].message.content);
 
   return res;
 };
