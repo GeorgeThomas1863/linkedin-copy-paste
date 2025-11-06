@@ -6,11 +6,11 @@ export const buildInputForm = async () => {
 
   const postTypeListItem = await buildPostTypeListItem();
   const selectAIListItem = await buildSelectAIListItem();
-  const userInputListItem = await buildUserInputListItem();
   const advancedOptionsListItem = await buildAdvancedOptionsListItem();
+  const userInputListItem = await buildUserInputListItem();
   const buttonListItem = await buildButtonListItem();
 
-  inputFormWrapper.append(postTypeListItem, selectAIListItem, userInputListItem, advancedOptionsListItem, buttonListItem);
+  inputFormWrapper.append(postTypeListItem, selectAIListItem, advancedOptionsListItem, userInputListItem, buttonListItem);
 
   return inputFormWrapper;
 };
@@ -87,28 +87,6 @@ export const buildSelectAIListItem = async () => {
   return selectAIListItem;
 };
 
-export const buildUserInputListItem = async () => {
-  const userInputListItem = document.createElement("li");
-  userInputListItem.id = "user-input-list-item";
-  userInputListItem.className = "form-list-item";
-
-  const userInputLabel = document.createElement("label");
-  userInputLabel.setAttribute("for", "user-input");
-  userInputLabel.className = "form-label";
-  userInputLabel.textContent = "User Input:";
-
-  const userInput = document.createElement("textarea");
-  userInput.rows = 7;
-  userInput.name = "user-input";
-  userInput.id = "user-input";
-  userInput.className = "form-textarea";
-  userInput.placeholder = "Enter your prompt here";
-
-  userInputListItem.append(userInputLabel, userInput);
-
-  return userInputListItem;
-};
-
 export const buildAdvancedOptionsListItem = async () => {
   const advancedOptionsListItem = document.createElement("li");
   advancedOptionsListItem.id = "advanced-options-list-item";
@@ -118,10 +96,6 @@ export const buildAdvancedOptionsListItem = async () => {
   const advancedHeader = document.createElement("div");
   advancedHeader.className = "advanced-options-header";
 
-  const advancedLabel = document.createElement("span");
-  advancedLabel.className = "advanced-options-label";
-  advancedLabel.textContent = "Advanced Options";
-
   const toggleButton = document.createElement("button");
   toggleButton.id = "advanced-options-toggle";
   toggleButton.className = "advanced-toggle-btn";
@@ -129,7 +103,11 @@ export const buildAdvancedOptionsListItem = async () => {
   toggleButton.setAttribute("aria-label", "Toggle advanced options");
   toggleButton.innerHTML = EXPAND_OPTIONS_SVG;
 
-  advancedHeader.append(advancedLabel, toggleButton); // Button first, then label
+  const advancedLabel = document.createElement("span");
+  advancedLabel.className = "advanced-options-label";
+  advancedLabel.textContent = "Options";
+
+  advancedHeader.append(toggleButton, advancedLabel); // Button first, then label
 
   // Collapsible content container
   const advancedContent = document.createElement("div");
@@ -152,7 +130,8 @@ export const buildAdvancedOptionsListItem = async () => {
 export const buildSelectModelListItem = async () => {
   const selectModelListItem = document.createElement("li");
   selectModelListItem.id = "select-model-list-item";
-  selectModelListItem.className = "form-list-item";
+  // selectModelListItem.className = "form-list-item";
+  selectModelListItem.className = "advanced-option-item";
 
   const selectModelLabel = document.createElement("label");
   selectModelLabel.textContent = "Model";
@@ -252,6 +231,28 @@ export const buildSystemPromptListItem = async () => {
 
   systemPromptWrapper.append(systemPromptLabel, systemPromptTextarea);
   return systemPromptWrapper;
+};
+
+export const buildUserInputListItem = async () => {
+  const userInputListItem = document.createElement("li");
+  userInputListItem.id = "user-input-list-item";
+  userInputListItem.className = "form-list-item";
+
+  const userInputLabel = document.createElement("label");
+  userInputLabel.setAttribute("for", "user-input");
+  userInputLabel.className = "form-label";
+  userInputLabel.textContent = "User Input:";
+
+  const userInput = document.createElement("textarea");
+  userInput.rows = 7;
+  userInput.name = "user-input";
+  userInput.id = "user-input";
+  userInput.className = "form-textarea";
+  userInput.placeholder = "Enter your prompt here";
+
+  userInputListItem.append(userInputLabel, userInput);
+
+  return userInputListItem;
 };
 
 export const buildButtonListItem = async () => {
