@@ -26,6 +26,10 @@ export const modelMap = {
     { value: "gpt-5-search-api", text: "GPT-5 Search API" },
     { value: "gpt-4.1", text: "GPT-4.1" },
   ],
-  claude: [{ value: "claude-3-5-sonnet-20240620", text: "Claude 3.5 Sonnet 20240620" }],
+  claude: [
+    { value: "claude-sonnet-4-5", text: "Claude Sonnet 4.5" },
+    { value: "claude-opus-4-1", text: "Claude Opus 4.1" },
+    { value: "claude-haiku-4-5", text: "Claude Haiku 4.5" },
+  ],
   "local-llm": [{ value: "local-llm", text: "Local LLM" }],
 };

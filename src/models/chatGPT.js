@@ -14,7 +14,7 @@ export const runChatGPT = async (inputParams) => {
   console.log("CHATGPT PARAMS");
   console.dir(inputParams);
 
-  const response = await client.responses.create({
+  const res = await client.responses.create({
     model: model,
     tools: [{ type: "web_search" }],
     // input: "What is the capital of Uzbekistan?"
@@ -22,9 +22,9 @@ export const runChatGPT = async (inputParams) => {
   });
 
   console.log("CHATGPT RESPONSE");
-  console.dir(response);
+  console.dir(res);
   console.log("MESSAGE RESPONSE");
-  console.log(response.output_text);
+  console.log(res.output_text);
 
-  return response;
+  return res;
 };
