@@ -1,0 +1,469 @@
+/* '''''''''''''''''''''''''''''''''''''''' */
+
+/* MAIN DEFAULT STYLES */
+
+/* '''''''''''''''''''''''''''''''''''''''' */
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#background-pic {
+  top: 0;
+  left: 0;
+  position: fixed;
+  object-fit: cover;
+  object-position: center top;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  opacity: 0.7;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin-top: 3rem;
+  padding: 0;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* ----------------------------------- */
+
+/* AUTH FORM STYLES */
+
+/* ------------------------------------- */
+
+#auth-form-wrapper {
+  margin: 1.5rem auto;
+  max-width: 500px;
+  padding: 1.5rem 2rem;
+  background: #fafbfc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#auth-form-wrapper li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#auth-pw-list-item {
+  margin-bottom: 1.5rem;
+}
+
+#auth-label {
+  margin-left: 0.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: left;
+  color: #2d3748;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* ----------------------------------- */
+
+/* INPUT FORM STYLES */
+
+/* ------------------------------------- */
+
+#input-form-wrapper {
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #374151;
+  letter-spacing: -0.02em;
+  /* margin-bottom: 0.5rem; */
+}
+
+.form-select {
+  width: 100%;
+  font-size: 1.5rem;
+  height: 2.8rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-textarea {
+  width: 100%;
+  font-size: 1.5rem;
+  /* height: 10rem; */
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.form-input {
+  width: 100%;
+  font-size: 1.5rem;
+  height: 2.8rem;
+  padding: 0 0.75rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+
+  box-sizing: border-box;
+  outline: none;
+}
+
+.form-textarea:hover,
+.form-select:hover,
+.form-input:hover {
+  border-color: #164388;
+  border-width: 3px;
+}
+
+.form-textarea:focus,
+.form-select:focus,
+.form-input:focus {
+  border-color: #164388;
+  border-width: 3px;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-textarea::placeholder,
+.form-input::placeholder {
+  color: #a0aec0;
+}
+
+.advanced-options-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.advanced-options-label {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #374151;
+  letter-spacing: -0.02em;
+}
+
+.advanced-toggle-btn {
+  background: transparent;
+  border: 2px solid #374151;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.advanced-toggle-btn:hover {
+  border-color: #164388;
+  background: rgba(22, 67, 136, 0.05);
+}
+
+.advanced-toggle-btn:focus {
+  outline: 2px solid #164388;
+  outline-offset: 2px;
+}
+
+.toggle-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+  color: #374151;
+  transition: transform 0.3s ease;
+}
+
+.advanced-toggle-btn:hover .toggle-icon {
+  color: #164388;
+}
+
+.toggle-icon .horizontal-line {
+  transition: opacity 0.3s ease;
+}
+
+.advanced-toggle-btn.expanded .horizontal-line {
+  opacity: 0;
+}
+
+.advanced-toggle-btn.expanded .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.advanced-options-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.advanced-options-content.expanded {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.advanced-option-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.advanced-option-item:last-child {
+  margin-bottom: 0;
+}
+
+.button-wrapper {
+  margin-top: 0.5rem;
+}
+
+#form-submit-button {
+  padding: 1rem;
+  color: #ffffff;
+  background: #1a5025;
+}
+
+#form-submit-button:hover {
+  background: #2f6047;
+}
+
+#form-submit-button:active {
+  background: #2f6047;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++ */
+
+/* -------------------------------------------------- */
+
+/* RETURN FORM STYLES */
+
+/* ----------------------------------------------------- */
+
+#return-wrapper {
+  max-width: 100%;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+#copy-paste-wrapper {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+#copy-paste-element {
+  background-color: #fafbfc;
+  padding: 1rem 3rem;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-radius: 8px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+#parse-data {
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+#copy-button {
+  margin: 0 auto;
+  width: 30%;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++ */
+
+/* -------------------------------------------------- */
+
+/* CLASSES */
+
+/* ----------------------------------------------------- */
+
+/* PW INPUT CLASSES */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input {
+  width: 100%;
+  padding: 14px 48px 14px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #2d3748;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.password-input:hover {
+  /* border-color: #3b82f6; */
+  border-color: #164388;
+}
+
+.password-input:focus {
+  border-color: #164388;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.password-input::placeholder {
+  color: #a0aec0;
+}
+
+/* === PASSWORD TOGGLE BUTTON === */
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #718096;
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #374151;
+}
+
+.password-toggle-btn:focus {
+  outline: 2px solid #164388;
+  outline-offset: 2px;
+}
+
+.password-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* -------------------------------------------------- */
+
+/* BUTTON CLASSES */
+
+/* .button-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  } */
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  background: #2563a8;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+}
+
+.btn-submit:hover {
+  background: linear-gradient(135deg, #3573b8 0%, #2563a8 100%);
+  /* transform: translateY(-2px); */
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.35);
+}
+
+.btn-submit:active {
+  /* transform: translateY(0); */
+  background: linear-gradient(135deg, #1d5398 0%, #164388 100%);
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.25);
+}
+
+.pretty-button {
+  background: #52525b;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.pretty-button:hover {
+  background: #3f3f46;
+}
+
+.pretty-button:active {
+  background: #3f3f46;
+}

@@ -1,4 +1,10 @@
-//FIX CHATGPT FRONTEND DISPLAY, THEN BUILD CLAUDE
+//STYLES ARE BETTER, BUT NEED TO BE FIXED
+
+//UNFUCK THE PROMPTS
+
+//FIX FRONTEND DATA RETURN DISPLAY
+
+//BUILD LOCAL LLM 
 
 import express from "express";
 import session from "express-session";
