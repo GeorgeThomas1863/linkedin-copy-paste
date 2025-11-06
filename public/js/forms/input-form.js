@@ -6,12 +6,11 @@ export const buildInputForm = async () => {
 
   const postTypeListItem = await buildPostTypeListItem();
   const selectAIListItem = await buildSelectAIListItem();
-  const selectModelListItem = await buildSelectModelListItem();
-  const advancedOptionsListItem = await buildAdvancedOptionsListItem();
   const userInputListItem = await buildUserInputListItem();
+  const advancedOptionsListItem = await buildAdvancedOptionsListItem();
   const buttonListItem = await buildButtonListItem();
 
-  inputFormWrapper.append(postTypeListItem, selectAIListItem, selectModelListItem, advancedOptionsListItem, userInputListItem, buttonListItem);
+  inputFormWrapper.append(postTypeListItem, selectAIListItem, userInputListItem, advancedOptionsListItem, buttonListItem);
 
   return inputFormWrapper;
 };
@@ -88,43 +87,6 @@ export const buildSelectAIListItem = async () => {
   return selectAIListItem;
 };
 
-export const buildSelectModelListItem = async () => {
-  const selectModelListItem = document.createElement("li");
-  selectModelListItem.id = "select-model-list-item";
-  selectModelListItem.className = "form-list-item";
-
-  const selectModelLabel = document.createElement("label");
-  selectModelLabel.textContent = "Select Model";
-  selectModelLabel.className = "form-label";
-  selectModelLabel.setAttribute("for", "model-type-select");
-
-  const modelSelectType = document.createElement("select");
-  modelSelectType.id = "model-type-select";
-  modelSelectType.className = "form-select";
-  modelSelectType.setAttribute("data-label", "model-type-select");
-
-  //default to perplexity models, change to others with js
-  const optionArray = [
-    { value: "sonar-pro", text: "Sonar Pro", selected: true },
-    { value: "sonar", text: "Sonar" },
-    { value: "sonar-pro-deep-research", text: "Sonar Pro Deep Research" },
-  ];
-
-  for (let i = 0; i < optionArray.length; i++) {
-    const optionData = optionArray[i];
-    const option = document.createElement("option");
-    option.value = optionData.value;
-    option.textContent = optionData.text;
-    if (optionData.selected) option.selected = true;
-
-    modelSelectType.append(option);
-  }
-
-  selectModelListItem.append(selectModelLabel, modelSelectType);
-
-  return selectModelListItem;
-};
-
 export const buildUserInputListItem = async () => {
   const userInputListItem = document.createElement("li");
   userInputListItem.id = "user-input-list-item";
@@ -174,28 +136,57 @@ export const buildAdvancedOptionsListItem = async () => {
   advancedContent.id = "advanced-options-content";
   advancedContent.className = "advanced-options-content";
 
-  // Temperature option
-  const temperatureWrapper = document.createElement("div");
-  temperatureWrapper.className = "advanced-option-item";
+  const selectModelListItem = await buildSelectModelListItem();
+  const maxTokensListItem = await buildMaxTokensListItem();
+  const temperatureListItem = await buildTemperatureListItem();
+  const systemPromptListItem = await buildSystemPromptListItem();
 
-  const temperatureLabel = document.createElement("label");
-  temperatureLabel.setAttribute("for", "temperature-input");
-  temperatureLabel.className = "form-label";
-  temperatureLabel.textContent = "Temperature";
+  // Append all options to content
+  advancedContent.append(selectModelListItem, maxTokensListItem, temperatureListItem, systemPromptListItem);
 
-  const temperatureInput = document.createElement("input");
-  temperatureInput.type = "number";
-  temperatureInput.id = "temperature-input";
-  temperatureInput.className = "form-input";
-  temperatureInput.min = "0";
-  temperatureInput.max = "2";
-  temperatureInput.step = "0.1";
-  temperatureInput.value = "0.7";
-  temperatureInput.placeholder = "0.7";
+  advancedOptionsListItem.append(advancedHeader, advancedContent);
 
-  temperatureWrapper.append(temperatureLabel, temperatureInput);
+  return advancedOptionsListItem;
+};
 
-  // Max tokens option
+export const buildSelectModelListItem = async () => {
+  const selectModelListItem = document.createElement("li");
+  selectModelListItem.id = "select-model-list-item";
+  selectModelListItem.className = "form-list-item";
+
+  const selectModelLabel = document.createElement("label");
+  selectModelLabel.textContent = "Model";
+  selectModelLabel.className = "form-label";
+  selectModelLabel.setAttribute("for", "model-type-select");
+
+  const modelSelectType = document.createElement("select");
+  modelSelectType.id = "model-type-select";
+  modelSelectType.className = "form-select";
+  modelSelectType.setAttribute("data-label", "model-type-select");
+
+  //default to perplexity models, change to others with js
+  const optionArray = [
+    { value: "sonar-pro", text: "Sonar Pro", selected: true },
+    { value: "sonar", text: "Sonar" },
+    { value: "sonar-pro-deep-research", text: "Sonar Pro Deep Research" },
+  ];
+
+  for (let i = 0; i < optionArray.length; i++) {
+    const optionData = optionArray[i];
+    const option = document.createElement("option");
+    option.value = optionData.value;
+    option.textContent = optionData.text;
+    if (optionData.selected) option.selected = true;
+
+    modelSelectType.append(option);
+  }
+
+  selectModelListItem.append(selectModelLabel, modelSelectType);
+
+  return selectModelListItem;
+};
+
+export const buildMaxTokensListItem = async () => {
   const maxTokensWrapper = document.createElement("div");
   maxTokensWrapper.className = "advanced-option-item";
 
@@ -216,6 +207,34 @@ export const buildAdvancedOptionsListItem = async () => {
 
   maxTokensWrapper.append(maxTokensLabel, maxTokensInput);
 
+  return maxTokensWrapper;
+};
+
+export const buildTemperatureListItem = async () => {
+  // Temperature option
+  const temperatureWrapper = document.createElement("div");
+  temperatureWrapper.className = "advanced-option-item";
+
+  const temperatureLabel = document.createElement("label");
+  temperatureLabel.setAttribute("for", "temperature-input");
+  temperatureLabel.className = "form-label";
+  temperatureLabel.textContent = "Temperature";
+
+  const temperatureInput = document.createElement("input");
+  temperatureInput.type = "number";
+  temperatureInput.id = "temperature-input";
+  temperatureInput.className = "form-input";
+  temperatureInput.min = "0";
+  temperatureInput.max = "2";
+  temperatureInput.step = "0.1";
+  temperatureInput.value = "0.7";
+  temperatureInput.placeholder = "0.7";
+
+  temperatureWrapper.append(temperatureLabel, temperatureInput);
+  return temperatureWrapper;
+};
+
+export const buildSystemPromptListItem = async () => {
   // System prompt option
   const systemPromptWrapper = document.createElement("div");
   systemPromptWrapper.className = "advanced-option-item";
@@ -232,28 +251,7 @@ export const buildAdvancedOptionsListItem = async () => {
   systemPromptTextarea.placeholder = "Enter custom system prompt (optional)";
 
   systemPromptWrapper.append(systemPromptLabel, systemPromptTextarea);
-
-  // Append all options to content
-  advancedContent.append(temperatureWrapper, maxTokensWrapper, systemPromptWrapper);
-
-  advancedOptionsListItem.append(advancedHeader, advancedContent);
-
-  // // Add toggle functionality
-  // toggleButton.addEventListener("click", () => {
-  //   const isExpanded = toggleButton.getAttribute("aria-expanded") === "true";
-
-  //   if (isExpanded) {
-  //     advancedContent.classList.remove("expanded");
-  //     toggleButton.setAttribute("aria-expanded", "false");
-  //     toggleButton.classList.remove("expanded");
-  //   } else {
-  //     advancedContent.classList.add("expanded");
-  //     toggleButton.setAttribute("aria-expanded", "true");
-  //     toggleButton.classList.add("expanded");
-  //   }
-  // });
-
-  return advancedOptionsListItem;
+  return systemPromptWrapper;
 };
 
 export const buildButtonListItem = async () => {
