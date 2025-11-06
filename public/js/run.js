@@ -58,6 +58,22 @@ export const runPwToggle = async () => {
   return true;
 };
 
+export const runAdvancedToggle = async () => {
+  const toggleButton = document.getElementById("advanced-options-toggle");
+  const advancedContent = document.getElementById("advanced-options-content");
+  const isExpanded = toggleButton.getAttribute("aria-expanded") === "true";
+
+  if (isExpanded) {
+    advancedContent.classList.remove("expanded");
+    toggleButton.setAttribute("aria-expanded", "false");
+    toggleButton.classList.remove("expanded");
+  } else {
+    advancedContent.classList.add("expanded");
+    toggleButton.setAttribute("aria-expanded", "true");
+    toggleButton.classList.add("expanded");
+  }
+};
+
 export const runPrettyToggle = async (clickId) => {
   if (!clickId) return null;
 

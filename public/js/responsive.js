@@ -1,4 +1,13 @@
-import { runAuthSubmit, runMainSubmit, runPwToggle, runPrettyToggle, runCopyReturnData, runAITypeSelect, runPostTypeSelect } from "./run.js";
+import {
+  runAuthSubmit,
+  runMainSubmit,
+  runPwToggle,
+  runAdvancedToggle,
+  runPrettyToggle,
+  runCopyReturnData,
+  runAITypeSelect,
+  runPostTypeSelect,
+} from "./run.js";
 
 const authElement = document.getElementById("auth-element");
 const displayElement = document.getElementById("display-element");
@@ -19,6 +28,7 @@ export const clickHandler = async (e) => {
   if (clickType === "submit-button") await runMainSubmit();
 
   if (clickType === "pwToggle") await runPwToggle();
+  if (clickType === "advancedToggle") await runAdvancedToggle();
   if (clickType === "make-pretty") await runPrettyToggle(clickId);
   if (clickType === "copy-return-data") await runCopyReturnData();
 };

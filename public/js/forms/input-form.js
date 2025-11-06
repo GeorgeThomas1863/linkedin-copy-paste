@@ -1,3 +1,5 @@
+import { EXPAND_OPTIONS_SVG } from "../util/define-things.js";
+
 export const buildInputForm = async () => {
   const inputFormWrapper = document.createElement("div");
   inputFormWrapper.id = "input-form-wrapper";
@@ -154,6 +156,10 @@ export const buildAdvancedOptionsListItem = async () => {
   const advancedHeader = document.createElement("div");
   advancedHeader.className = "advanced-options-header";
 
+  const advancedLabel = document.createElement("span");
+  advancedLabel.className = "advanced-options-label";
+  advancedLabel.textContent = "Advanced Options";
+
   const toggleButton = document.createElement("button");
   toggleButton.id = "advanced-options-toggle";
   toggleButton.className = "advanced-toggle-btn";
@@ -161,11 +167,7 @@ export const buildAdvancedOptionsListItem = async () => {
   toggleButton.setAttribute("aria-label", "Toggle advanced options");
   toggleButton.innerHTML = EXPAND_OPTIONS_SVG;
 
-  const advancedLabel = document.createElement("span");
-  advancedLabel.className = "advanced-options-label";
-  advancedLabel.textContent = "Advanced Options";
-
-  advancedHeader.append(toggleButton, advancedLabel); // Button first, then label
+  advancedHeader.append(advancedLabel, toggleButton); // Button first, then label
 
   // Collapsible content container
   const advancedContent = document.createElement("div");
