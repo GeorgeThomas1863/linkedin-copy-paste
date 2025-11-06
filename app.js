@@ -1,3 +1,5 @@
+//FIX CHATGPT FRONTEND DISPLAY, THEN BUILD CLAUDE
+
 import express from "express";
 import session from "express-session";
 import routes from "./routes/router.js";

@@ -5,7 +5,6 @@ import CONFIG from "../../config/config.js";
 const client = new OpenAI({
   apiKey: CONFIG.OPENAI_API_KEY,
   //ADD BASE URL
-
 });
 
 export const runChatGPT = async (inputParams) => {
@@ -17,7 +16,8 @@ export const runChatGPT = async (inputParams) => {
 
   const response = await client.responses.create({
     model: model,
-    // tools: [{ type: "web_search" }],
+    tools: [{ type: "web_search" }],
+    // input: "What is the capital of Uzbekistan?"
     input: prompt,
   });
 
