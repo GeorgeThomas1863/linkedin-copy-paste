@@ -25,20 +25,12 @@ export const runClaude = async (inputParams) => {
     model: model,
     tools: [
       {
+        type: "web_search_20250305", // Built-in web search tool!
         name: "web_search",
-        description: "Searches the web for current information",
-        input_schema: {
-          type: "object",
-          properties: {
-            query: {
-              type: "string",
-              description: "The search query",
-            },
-          },
-          required: ["query"],
-        },
+        max_uses: 5, // Optional: limit number of searches
       },
     ],
+
     messages: messages,
     max_tokens: 500,
   });
