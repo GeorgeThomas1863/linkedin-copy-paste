@@ -12,8 +12,9 @@ export const buildInputForm = async () => {
 
   //ADVANCED OPTIONS
   const selectModelListItem = await buildSelectModelListItem();
-  const maxTokensListItem = await buildMaxTokensListItem();
-  const temperatureListItem = await buildTemperatureListItem();
+  const tokenTempListItem = await buildTokenTempListItem();
+  // const maxTokensListItem = await buildMaxTokensListItem();
+  // const temperatureListItem = await buildTemperatureListItem();
   const systemPromptListItem = await buildSystemPromptListItem();
 
   inputFormWrapper.append(
@@ -21,8 +22,9 @@ export const buildInputForm = async () => {
     postTypeListItem,
     advancedOptionsListItem,
     selectModelListItem,
-    maxTokensListItem,
-    temperatureListItem,
+    tokenTempListItem,
+    // maxTokensListItem,
+    // temperatureListItem,
     systemPromptListItem,
     userInputListItem,
     buttonListItem
@@ -169,11 +171,22 @@ export const buildSelectModelListItem = async () => {
   return selectModelListItem;
 };
 
-export const buildMaxTokensListItem = async () => {
-  const maxTokensWrapper = document.createElement("div");
-  maxTokensWrapper.id = "max-tokens-list-item";
-  maxTokensWrapper.className = "form-list-item";
-  maxTokensWrapper.classList.add("hidden");
+export const buildTokenTempListItem = async () => {
+  const tokenTempWrapper = document.createElement("div");
+  tokenTempWrapper.id = "token-temp-list-item";
+  tokenTempWrapper.className = "form-list-item";
+  tokenTempWrapper.classList.add("hidden");
+
+  const maxTokensDiv = await buildMaxTokensDiv();
+  const temperatureDiv = await buildTemperatureDiv();
+  tokenTempWrapper.append(maxTokensDiv, temperatureDiv);
+  return tokenTempWrapper;
+};
+
+export const buildMaxTokensDiv = async () => {
+  const maxTokensDiv = document.createElement("div");
+  maxTokensDiv.id = "max-tokens-div";
+  maxTokensDiv.className = "input-half";
 
   const maxTokensLabel = document.createElement("label");
   maxTokensLabel.setAttribute("for", "max-tokens-input");
@@ -190,17 +203,16 @@ export const buildMaxTokensListItem = async () => {
   maxTokensInput.value = "1000";
   maxTokensInput.placeholder = "1000";
 
-  maxTokensWrapper.append(maxTokensLabel, maxTokensInput);
+  maxTokensDiv.append(maxTokensLabel, maxTokensInput);
 
-  return maxTokensWrapper;
+  return maxTokensDiv;
 };
 
-export const buildTemperatureListItem = async () => {
+export const buildTemperatureDiv = async () => {
   // Temperature option
-  const temperatureWrapper = document.createElement("div");
-  temperatureWrapper.id = "temperature-list-item";
-  temperatureWrapper.className = "form-list-item";
-  temperatureWrapper.classList.add("hidden");
+  const temperatureDiv = document.createElement("div");
+  temperatureDiv.id = "temperature-div";
+  temperatureDiv.className = "input-half";
 
   const temperatureLabel = document.createElement("label");
   temperatureLabel.setAttribute("for", "temperature-input");
@@ -217,8 +229,8 @@ export const buildTemperatureListItem = async () => {
   temperatureInput.value = "0.7";
   temperatureInput.placeholder = "0.7";
 
-  temperatureWrapper.append(temperatureLabel, temperatureInput);
-  return temperatureWrapper;
+  temperatureDiv.append(temperatureLabel, temperatureInput);
+  return temperatureDiv;
 };
 
 export const buildSystemPromptListItem = async () => {
