@@ -47,7 +47,8 @@ export const buildSelectAIListItem = async () => {
   aiSelectType.setAttribute("data-label", "ai-type-select");
 
   const optionArray = [
-    { value: "perplexity", text: "Perplexity", selected: true },
+    { value: "all", text: "ALL [submits to all at once]", selected: true },
+    { value: "perplexity", text: "Perplexity" },
     { value: "chatgpt", text: "ChatGPT" },
     { value: "claude", text: "Claude" },
     { value: "local-llm", text: "Local LLM" },
