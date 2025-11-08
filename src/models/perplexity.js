@@ -7,18 +7,18 @@ const client = new OpenAI({
 });
 
 export const runPerplexity = async (inputParams) => {
-  const { prompt, model } = inputParams;
+  const { prompt, model, maxTokens } = inputParams;
   if (!prompt || !model) return null;
 
-  const messages = [
-    { role: "system", content: "You are a helpful assistant." },
-    { role: "user", content: prompt },
-  ];
+  // const messages = [
+  //   { role: "system", content: "You are a helpful assistant." },
+  //   { role: "user", content: prompt },
+  // ];
 
   const params = {
     model: model,
-    messages: messages,
-    max_tokens: 500,
+    messages: prompt,
+    max_tokens: maxTokens,
     search_recency_filter: "week",
     // reasoning_effort: "high", //TURN OFF
   };

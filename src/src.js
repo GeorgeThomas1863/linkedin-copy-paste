@@ -5,7 +5,7 @@ import { runLocalLLM } from "./models/local.js";
 
 export const runAI = async (inputParams) => {
   if (!inputParams) return null;
-  const { aiType, model } = inputParams;
+  const { aiType, model, maxTokens, temperature } = inputParams;
 
   console.log("RUN AI BACKEND INPUT PARAMS");
   console.dir(inputParams);
@@ -17,33 +17,55 @@ export const runAI = async (inputParams) => {
   const params = {
     prompt: prompt,
     model: model,
+    maxTokens: maxTokens,
+    temperature: temperature,
   };
 
-  // if (aiType === "perplexity") return await runPerplexity(params);
-  // if (aiType === "chatgpt") return await runChatGPT(params);
-  // if (aiType === "claude") return await runClaude(params);
-  // if (aiType === "local-llm") return await runLocalLLM(params);
-
-  // return null;
+  if (aiType === "all") return await runAll(params);
+  if (aiType === "perplexity") return await runPerplexity(params);
+  if (aiType === "chatgpt") return await runChatGPT(params);
+  if (aiType === "claude") return await runClaude(params);
+  if (aiType === "local-llm") return await runLocalLLM(params);
 };
 
 //MAKE BETTER
 export const buildPrompt = async (inputParams) => {
   if (!inputParams) return null;
-  const { postType, userInput } = inputParams;
+  const { postType, userInput, systemPrompt } = inputParams;
 
+  const promptArray = await getSystemPrompt(systemPrompt);
+
+  let userPrompt = null;
   switch (postType) {
     case "cybersecurity-news":
-      return await cybersecurityNewsPrompt();
+      userPrompt = await getCybersecurityNewsPrompt();
+      break;
+
     case "foreign-policy-news":
-      return "You are a foreign policy expert. Please write 3-4 sentences on relevant foreign policy news.";
+      userPrompt = await getForeignPolicyNewsPrompt();
+      break;
+
     case "user-input":
-      return userInput;
+      userPrompt = userInput;
+      break;
   }
+
+  if (!userPrompt) return null;
+  promptArray.push({ role: "user", content: userPrompt });
+
+  return promptArray;
 };
 
-//make less stupid
-export const cybersecurityNewsPrompt = async () => {
+export const getSystemPrompt = async (systemPrompt) => {
+  //default system prompt
+  if (!systemPrompt) {
+    return [{ role: "system", content: "You are a helpful assistant." }];
+  }
+
+  return [{ role: "system", content: systemPrompt }];
+};
+
+export const getCybersecurityNewsPrompt = async () => {
   const prompt = `You are a cybersecurity news research assistant that scans the open web in real time to find the single most important and interesting cybersecurity news story from the past 24 hours.
 
 Your task is to:
@@ -97,5 +119,11 @@ If multiple stories are equally important, select only one — whichever has the
 
 To repeat, the story you pick must be less than 24 hours old at the time of retrieval.`;
 
+  return prompt;
+};
+
+//MAKE LESS STUPID
+export const getForeignPolicyNewsPrompt = async () => {
+  const prompt = `You are a foreign policy expert. Please write 3-4 sentences on relevant foreign policy news.`;
   return prompt;
 };
