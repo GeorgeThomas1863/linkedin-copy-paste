@@ -120,27 +120,21 @@ li {
 /* Form Sections */
 .form-list-item {
   padding: 2rem;
-  /* padding: 32px; */
-  /* border-bottom: 1px solid #f3f4f6; */
-}
-
-.form-list-item:last-child {
-  border-bottom: none;
+  padding-bottom: 0;
 }
 
 #button-list-item {
-  padding: 24px 32px;
-  background: rgba(250, 251, 252, 0.6);
-  border-bottom: none;
+  padding: 1rem 2rem;
 }
 
 /* Labels */
 .form-label {
   display: block;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #374151;
-  margin-bottom: 8px;
+  margin-bottom: 0.1rem;
+  margin-left: 0.25rem;
 }
 
 /* Form Controls */
@@ -150,7 +144,7 @@ li {
 .form-textarea {
   width: 100%;
   padding: 11px 14px;
-  font-size: 15px;
+  font-size: 0.9rem;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #111827;
   background: rgba(255, 255, 255, 0.7);
@@ -160,7 +154,15 @@ li {
   transition: all 0.2s ease;
 }
 
-.form-select:focus,
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
 .form-input:focus,
 .form-textarea:focus {
   border-color: #3b82f6;
@@ -168,7 +170,6 @@ li {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
 }
 
-.form-select:hover,
 .form-input:hover,
 .form-textarea:hover {
   border-color: #9ca3af;
@@ -181,13 +182,9 @@ li {
   line-height: 1.6;
 }
 
-.form-select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 40px;
+.form-select:hover,
+.form-select:focus {
+  border-color: #3b82f6;
 }
 
 .form-textarea::placeholder,
