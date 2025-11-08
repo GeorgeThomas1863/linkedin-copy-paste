@@ -205,36 +205,36 @@ li {
 /* ADVANCED OPTIONS */
 /* ------------------------------------- */
 
-#advanced-options-list-item {
+/* #advanced-options-list-item {
   padding: 32px;
   border-bottom: 1px solid #f3f4f6;
-}
+} */
 
 /* Collapsible Section */
-.collapsible-section,
+/* .collapsible-section,
 .advanced-options-content {
   border: 1px solid rgba(229, 231, 235, 0.6);
   border-radius: 8px;
   overflow: hidden;
-}
+} */
 
-.advanced-options-header {
+/* .advanced-options-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: rgba(250, 251, 252, 0.6);
+  padding: 0.75rem 1rem;
+  background: rgba(232, 233, 234, 0.7);
   cursor: pointer;
   transition: background 0.2s ease;
   border: none;
   width: 100%;
-}
+  border-radius: 8px;
+} */
 
-.advanced-options-header:hover {
+/* .advanced-options-header:hover {
   background: rgba(243, 244, 246, 0.7);
-}
+} */
 
-.collapsible-title,
+/* .collapsible-title,
 .advanced-options-label {
   display: flex;
   align-items: center;
@@ -242,9 +242,9 @@ li {
   font-size: 15px;
   font-weight: 600;
   color: #374151;
-}
+} */
 
-.advanced-toggle-btn {
+/* .advanced-toggle-btn {
   width: 24px;
   height: 24px;
   display: flex;
@@ -255,20 +255,20 @@ li {
   cursor: pointer;
   color: #6b7280;
   font-size: 14px;
-}
+} */
 
-.collapsible-chevron {
+/* .collapsible-chevron {
   font-size: 16px;
   color: #9ca3af;
   transition: transform 0.3s ease;
-}
+} */
 
-.advanced-toggle-btn.expanded .collapsible-chevron {
+/* .advanced-toggle-btn.expanded .collapsible-chevron {
   transform: rotate(90deg);
-}
+} */
 
-/* Collapsible Body */
-.advanced-options-content {
+
+/* .advanced-options-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
@@ -284,10 +284,9 @@ li {
   padding: 24px 20px;
   display: grid;
   gap: 20px;
-}
+} */
 
-/* Advanced Option Items */
-.advanced-option-item {
+/* .advanced-option-item {
   margin-bottom: 20px;
 }
 
@@ -307,14 +306,14 @@ li {
 #temperature-list-item:last-child,
 #system-prompt-list-item:last-child {
   margin-bottom: 0;
-}
+} */
 
 /* Field Row for side-by-side inputs */
-.field-row {
+/* .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-}
+} */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 

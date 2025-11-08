@@ -10,7 +10,24 @@ export const buildInputForm = async () => {
   const userInputListItem = await buildUserInputListItem();
   const buttonListItem = await buildButtonListItem();
 
-  inputFormWrapper.append(postTypeListItem, selectAIListItem, advancedOptionsListItem, userInputListItem, buttonListItem);
+  //ADVANCED OPTIONS
+  const selectModelListItem = await buildSelectModelListItem();
+  const maxTokensListItem = await buildMaxTokensListItem();
+  const temperatureListItem = await buildTemperatureListItem();
+  const systemPromptListItem = await buildSystemPromptListItem();
+
+  //inputFormWrapper.append(postTypeListItem, selectAIListItem, advancedOptionsListItem, userInputListItem, buttonListItem);
+  inputFormWrapper.append(
+    postTypeListItem,
+    selectAIListItem,
+    advancedOptionsListItem,
+    selectModelListItem,
+    maxTokensListItem,
+    temperatureListItem,
+    systemPromptListItem,
+    userInputListItem,
+    buttonListItem
+  );
 
   return inputFormWrapper;
 };
@@ -93,8 +110,13 @@ export const buildAdvancedOptionsListItem = async () => {
   advancedOptionsListItem.className = "form-list-item";
 
   // Header with toggle button
-  const advancedHeader = document.createElement("div");
-  advancedHeader.className = "advanced-options-header";
+  // const advancedHeader = document.createElement("div");
+  // advancedHeader.id = "advanced-options-header";
+  // advancedHeader.className = "form-list-item";
+
+  const advancedLabel = document.createElement("span");
+  advancedLabel.className = "form-label";
+  advancedLabel.textContent = "Options";
 
   const toggleButton = document.createElement("button");
   toggleButton.id = "advanced-options-toggle";
@@ -103,26 +125,20 @@ export const buildAdvancedOptionsListItem = async () => {
   toggleButton.setAttribute("aria-label", "Toggle advanced options");
   toggleButton.innerHTML = EXPAND_OPTIONS_SVG;
 
-  const advancedLabel = document.createElement("span");
-  advancedLabel.className = "advanced-options-label";
-  advancedLabel.textContent = "Options";
-
-  advancedHeader.append(toggleButton, advancedLabel); // Button first, then label
+  // advancedHeader.append(advancedLabel, toggleButton);
 
   // Collapsible content container
   const advancedContent = document.createElement("div");
   advancedContent.id = "advanced-options-content";
   advancedContent.className = "advanced-options-content";
 
-  const selectModelListItem = await buildSelectModelListItem();
-  const maxTokensListItem = await buildMaxTokensListItem();
-  const temperatureListItem = await buildTemperatureListItem();
-  const systemPromptListItem = await buildSystemPromptListItem();
-
   // Append all options to content
-  advancedContent.append(selectModelListItem, maxTokensListItem, temperatureListItem, systemPromptListItem);
+  // advancedContent.append(selectModelListItem, maxTokensListItem, temperatureListItem, systemPromptListItem);
 
-  advancedOptionsListItem.append(advancedHeader, advancedContent);
+  // advancedOptionsListItem.append(advancedHeader, advancedContent);\
+
+  // advancedOptionsListItem.append(advancedLabel, toggleButton, selectModelListItem, maxTokensListItem, temperatureListItem, systemPromptListItem);
+  advancedOptionsListItem.append(advancedLabel, toggleButton);
 
   return advancedOptionsListItem;
 };
@@ -130,8 +146,7 @@ export const buildAdvancedOptionsListItem = async () => {
 export const buildSelectModelListItem = async () => {
   const selectModelListItem = document.createElement("li");
   selectModelListItem.id = "select-model-list-item";
-  // selectModelListItem.className = "form-list-item";
-  selectModelListItem.className = "advanced-option-item";
+  selectModelListItem.className = "form-list-item";
 
   const selectModelLabel = document.createElement("label");
   selectModelLabel.textContent = "Model";
@@ -167,7 +182,7 @@ export const buildSelectModelListItem = async () => {
 
 export const buildMaxTokensListItem = async () => {
   const maxTokensWrapper = document.createElement("div");
-  maxTokensWrapper.className = "advanced-option-item";
+  maxTokensWrapper.className = "form-list-item";
 
   const maxTokensLabel = document.createElement("label");
   maxTokensLabel.setAttribute("for", "max-tokens-input");
@@ -192,7 +207,7 @@ export const buildMaxTokensListItem = async () => {
 export const buildTemperatureListItem = async () => {
   // Temperature option
   const temperatureWrapper = document.createElement("div");
-  temperatureWrapper.className = "advanced-option-item";
+  temperatureWrapper.className = "form-list-item";
 
   const temperatureLabel = document.createElement("label");
   temperatureLabel.setAttribute("for", "temperature-input");
@@ -216,7 +231,7 @@ export const buildTemperatureListItem = async () => {
 export const buildSystemPromptListItem = async () => {
   // System prompt option
   const systemPromptWrapper = document.createElement("div");
-  systemPromptWrapper.className = "advanced-option-item";
+  systemPromptWrapper.className = "form-list-item";
 
   const systemPromptLabel = document.createElement("label");
   systemPromptLabel.setAttribute("for", "system-prompt-input");
