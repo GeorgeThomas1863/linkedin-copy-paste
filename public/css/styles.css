@@ -244,7 +244,14 @@ li {
   color: #374151;
 } */
 
-/* .advanced-toggle-btn {
+.toggle-wrapper {
+  background: rgba(249, 250, 251, 0.7);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.advanced-toggle-btn {
   width: 24px;
   height: 24px;
   display: flex;
@@ -255,18 +262,20 @@ li {
   cursor: pointer;
   color: #6b7280;
   font-size: 14px;
+}
+
+/* .advanced-toggle-btn svg {
+  width: 20px;
+  height: 20px;
 } */
 
-/* .collapsible-chevron {
-  font-size: 16px;
-  color: #9ca3af;
-  transition: transform 0.3s ease;
-} */
+.advanced-toggle-btn.expanded svg {
+  transform: rotate(90deg);
+}
 
 /* .advanced-toggle-btn.expanded .collapsible-chevron {
   transform: rotate(90deg);
 } */
-
 
 /* .advanced-options-content {
   max-height: 0;

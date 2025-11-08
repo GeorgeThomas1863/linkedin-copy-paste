@@ -118,6 +118,9 @@ export const buildAdvancedOptionsListItem = async () => {
   advancedLabel.className = "form-label";
   advancedLabel.textContent = "Options";
 
+  const toggleWrapper = document.createElement("div");
+  toggleWrapper.className = "toggle-wrapper";
+
   const toggleButton = document.createElement("button");
   toggleButton.id = "advanced-options-toggle";
   toggleButton.className = "advanced-toggle-btn";
@@ -125,12 +128,14 @@ export const buildAdvancedOptionsListItem = async () => {
   toggleButton.setAttribute("aria-label", "Toggle advanced options");
   toggleButton.innerHTML = EXPAND_OPTIONS_SVG;
 
+  toggleWrapper.append(toggleButton);
+
   // advancedHeader.append(advancedLabel, toggleButton);
 
   // Collapsible content container
-  const advancedContent = document.createElement("div");
-  advancedContent.id = "advanced-options-content";
-  advancedContent.className = "advanced-options-content";
+  // const advancedContent = document.createElement("div");
+  // advancedContent.id = "advanced-options-content";
+  // advancedContent.className = "advanced-options-content";
 
   // Append all options to content
   // advancedContent.append(selectModelListItem, maxTokensListItem, temperatureListItem, systemPromptListItem);
@@ -138,7 +143,7 @@ export const buildAdvancedOptionsListItem = async () => {
   // advancedOptionsListItem.append(advancedHeader, advancedContent);\
 
   // advancedOptionsListItem.append(advancedLabel, toggleButton, selectModelListItem, maxTokensListItem, temperatureListItem, systemPromptListItem);
-  advancedOptionsListItem.append(advancedLabel, toggleButton);
+  advancedOptionsListItem.append(advancedLabel, toggleWrapper);
 
   return advancedOptionsListItem;
 };
