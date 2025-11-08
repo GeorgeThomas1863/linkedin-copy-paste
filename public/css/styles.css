@@ -105,19 +105,16 @@ li {
 /* INPUT FORM STYLES */
 /* ------------------------------------- */
 
-/* Main Form Wrapper */
 #input-form-wrapper {
   max-width: 720px;
   margin: 0 auto;
   background: #ffffff;
-  /* backdrop-filter: blur(16px); */
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-/* Form Sections */
 .form-list-item {
   padding: 2rem;
   padding-bottom: 0;
@@ -127,7 +124,6 @@ li {
   padding: 1rem 2rem;
 }
 
-/* Labels */
 .form-label {
   display: block;
   font-size: 0.9rem;
@@ -137,7 +133,6 @@ li {
   margin-left: 0.25rem;
 }
 
-/* Form Controls */
 .form-control,
 .form-select,
 .form-input,
@@ -192,63 +187,11 @@ li {
   color: #9ca3af;
 }
 
-/* Field Description */
-.field-description {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 6px;
-}
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-/* ----------------------------------- */
-/* ADVANCED OPTIONS */
-/* ------------------------------------- */
-
-/* #advanced-options-list-item {
-  padding: 32px;
-  border-bottom: 1px solid #f3f4f6;
-} */
-
-/* Collapsible Section */
-/* .collapsible-section,
-.advanced-options-content {
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  border-radius: 8px;
-  overflow: hidden;
-} */
-
-/* .advanced-options-header {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background: rgba(232, 233, 234, 0.7);
-  cursor: pointer;
-  transition: background 0.2s ease;
-  border: none;
-  width: 100%;
-  border-radius: 8px;
-} */
-
-/* .advanced-options-header:hover {
-  background: rgba(243, 244, 246, 0.7);
-} */
-
-/* .collapsible-title,
-.advanced-options-label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #374151;
-} */
-
 .toggle-wrapper {
-  background: rgba(249, 250, 251, 0.7);
+  background: rgba(234, 235, 236, 0.9);
   border-radius: 8px;
   padding: 0.75rem 1rem;
-  margin-top: 0.5rem;
+  cursor: pointer;
 }
 
 .advanced-toggle-btn {
@@ -259,201 +202,13 @@ li {
   justify-content: center;
   background: transparent;
   border: none;
-  cursor: pointer;
   color: #6b7280;
   font-size: 14px;
-}
-
-/* .advanced-toggle-btn svg {
-  width: 20px;
-  height: 20px;
-} */
-
-.advanced-toggle-btn.expanded svg {
-  transform: rotate(90deg);
-}
-
-/* .advanced-toggle-btn.expanded .collapsible-chevron {
-  transform: rotate(90deg);
-} */
-
-/* .advanced-options-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  border: none;
-}
-
-.advanced-options-content.expanded {
-  max-height: 1000px;
-  border-top: 1px solid #e5e7eb;
-}
-
-.collapsible-body {
-  padding: 24px 20px;
-  display: grid;
-  gap: 20px;
-} */
-
-/* .advanced-option-item {
-  margin-bottom: 20px;
-}
-
-.advanced-option-item:last-child {
-  margin-bottom: 0;
-}
-
-#select-model-list-item,
-#max-tokens-list-item,
-#temperature-list-item,
-#system-prompt-list-item {
-  margin-bottom: 20px;
-}
-
-#select-model-list-item:last-child,
-#max-tokens-list-item:last-child,
-#temperature-list-item:last-child,
-#system-prompt-list-item:last-child {
-  margin-bottom: 0;
-} */
-
-/* Field Row for side-by-side inputs */
-/* .field-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-} */
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-/* ----------------------------------- */
-/* BUTTON STYLES */
-/* ------------------------------------- */
-
-.button-wrapper {
-  width: 100%;
-}
-
-.btn-submit,
-#form-submit-button {
-  width: 100%;
-  padding: 14px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #ffffff;
-  background: #111827;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.btn-submit:hover,
-#form-submit-button:hover {
-  background: #1f2937;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn-submit:active,
-#form-submit-button:active {
-  transform: translateY(0);
-}
-
-/* Info Footer */
-.info-footer {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-.status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.status-icon {
-  width: 8px;
-  height: 8px;
-  background: #10b981;
-  border-radius: 50%;
-}
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-/* ----------------------------------- */
-/* PASSWORD INPUT STYLES */
-/* ------------------------------------- */
-
-.password-input-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.password-input {
-  width: 100%;
-  padding: 11px 44px 11px 14px;
-  font-size: 15px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #111827;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(209, 213, 219, 0.6);
-  border-radius: 8px;
-  outline: none;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-}
-
-.password-input:hover {
-  border-color: #9ca3af;
-  background: rgba(255, 255, 255, 0.85);
-}
-
-.password-input:focus {
-  border-color: #3b82f6;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
-}
-
-.password-input::placeholder {
-  color: #9ca3af;
-}
-
-.password-toggle-btn {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b7280;
-  transition: color 0.2s ease;
-}
-
-.password-toggle-btn:hover {
-  color: #374151;
-}
-
-.password-toggle-btn:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-.password-toggle-btn svg {
-  width: 20px;
-  height: 20px;
+.advanced-toggle-btn.expanded {
+  transform: rotate(90deg);
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -542,44 +297,97 @@ li {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* ----------------------------------- */
-/* RESPONSIVE ADJUSTMENTS */
+/* CLASSES */
 /* ------------------------------------- */
 
-/* @media (max-width: 768px) {
-  body {
-    padding: 24px 16px;
-  }
+.button-wrapper {
+  width: 100%;
+}
 
-  .page-header {
-    margin-bottom: 24px;
-  }
+.btn-submit {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #111827;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  .page-header h1 {
-    font-size: 24px;
-  }
+.btn-submit:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-  .form-list-item,
-  #advanced-options-list-item {
-    padding: 24px 20px;
-  }
+.btn-submit:active {
+  transform: translateY(0);
+}
 
-  #button-list-item {
-    padding: 20px;
-  }
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
 
-  .field-row {
-    grid-template-columns: 1fr;
-  }
-} */
+.password-input {
+  width: 100%;
+  padding: 11px 44px 11px 14px;
+  font-size: 15px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #111827;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
 
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.password-input:hover {
+  border-color: #9ca3af;
+  background: rgba(255, 255, 255, 0.85);
+}
 
-/* ----------------------------------- */
-/* UTILITY CLASSES */
-/* ------------------------------------- */
+.password-input:focus {
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+}
 
-.section-divider {
-  height: 1px;
-  background: #f3f4f6;
-  margin: 0;
+.password-input::placeholder {
+  color: #9ca3af;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #374151;
+}
+
+.password-toggle-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.password-toggle-btn svg {
+  width: 20px;
+  height: 20px;
 }

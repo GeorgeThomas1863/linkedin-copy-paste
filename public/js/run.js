@@ -1,5 +1,6 @@
 import { buildReturnForm } from "./forms/return-form.js";
 import { sendToBack } from "./util/api-front.js";
+import { hideArray, unhideArray, getHideArray } from "./util/collapse.js";
 import { EYE_OPEN_SVG, EYE_CLOSED_SVG, modelMap } from "./util/define-things.js";
 
 export const runAuthSubmit = async () => {
@@ -62,13 +63,18 @@ export const runAdvancedToggle = async () => {
   const toggleButton = document.getElementById("advanced-options-toggle");
   const advancedContent = document.getElementById("advanced-options-content");
   const isExpanded = toggleButton.getAttribute("aria-expanded") === "true";
+  const hideListItems = await getHideArray();
+  console.log("HIDE LIST ITEMS");
+  console.dir(hideListItems);
 
   if (isExpanded) {
-    advancedContent.classList.remove("expanded");
+    // advancedContent.classList.remove("expanded");
+    await hideArray(hideListItems);
     toggleButton.setAttribute("aria-expanded", "false");
     toggleButton.classList.remove("expanded");
   } else {
-    advancedContent.classList.add("expanded");
+    await unhideArray(hideListItems);
+    // advancedContent.classList.add("expanded");
     toggleButton.setAttribute("aria-expanded", "true");
     toggleButton.classList.add("expanded");
   }
@@ -121,8 +127,6 @@ export const runCopyReturnData = async () => {
 };
 
 //--------------------
-
-// export const runAITypeSelect = async (changeValue) => {}
 
 export const runAITypeSelect = async (changeValue) => {
   if (!changeValue) return null;
