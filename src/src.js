@@ -31,9 +31,9 @@ export const runAI = async (inputParams) => {
 //MAKE BETTER
 export const buildPrompt = async (inputParams) => {
   if (!inputParams) return null;
-  const { postType, userInput, systemPrompt } = inputParams;
+  const { postType, userInput, systemPrompt, aiType } = inputParams;
 
-  const promptArray = await getSystemPrompt(systemPrompt);
+  const promptArray = await getSystemPrompt(systemPrompt, aiType);
 
   let userPrompt = null;
   switch (postType) {
@@ -56,7 +56,9 @@ export const buildPrompt = async (inputParams) => {
   return promptArray;
 };
 
-export const getSystemPrompt = async (systemPrompt) => {
+export const getSystemPrompt = async (systemPrompt, aiType) => {
+  if (aiType === "claude") return [];
+  
   //default system prompt
   if (!systemPrompt) {
     return [{ role: "system", content: "You are a helpful assistant." }];

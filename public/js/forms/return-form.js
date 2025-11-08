@@ -48,16 +48,17 @@ export const buildCopyPasteArea = async (data) => {
 
 export const getCopyPasteText = async (data) => {
   if (!data) return null;
+  const { aiReturnType } = data;
+  console.log("AI RETURN TYPE");
+  console.log(aiReturnType);
+  console.dir(data);
 
   //for perplexity
-  const text = data.choices[0].message.content;
-  if (!text) return null;
+  if (aiReturnType === "perplexity") return data.choices[0].message.content;
+  if (aiReturnType === "chatgpt") return data.output_text;
+  if (aiReturnType === "claude") return data.content[0].text;
 
-  return text;
-
-  // const formattedText = text.replaceAll("\n", "<br>");
-
-  // return JSON.stringify(formattedText);
+  return null;
 };
 
 export const buildMakePrettyButtons = async () => {

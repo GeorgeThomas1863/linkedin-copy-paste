@@ -3,25 +3,16 @@ import CONFIG from "../../config/config.js";
 
 const client = new Anthropic({
   apiKey: CONFIG.CLAUDE_API_KEY,
-  // baseURL: "https://api.anthropic.com/v1",
-  // defaultHeaders: {
-  //   "anthropic-version": "2023-06-01",
-  // },
 });
 
 export const runClaude = async (inputParams) => {
-  const { prompt, model } = inputParams;
+  const { prompt, model, maxTokens, temperature } = inputParams;
   if (!prompt || !model) return null;
 
   console.log("CLAUDE PARAMS");
   console.dir(inputParams);
 
-  const messages = [
-    // { role: "system", content: "You are a helpful assistant." },
-    { role: "user", content: prompt },
-  ];
-
-  const res = await client.messages.create({
+  const data = await client.messages.create({
     model: model,
     tools: [
       {
@@ -30,14 +21,17 @@ export const runClaude = async (inputParams) => {
         max_uses: 5, // Optional: limit number of searches
       },
     ],
-    messages: messages,
-    max_tokens: 500,
+    messages: prompt,
+    max_tokens: +maxTokens,
+    temperature: +temperature,
   });
+  if (!data) return null;
+  data.aiReturnType = "claude";
 
   console.log("CLAUDE RESPONSE");
-  console.log(res);
+  console.log(data);
   console.log("MESSAGE RESPONSE");
-  console.log(res.content);
+  console.log(data.content);
 
-  return res;
+  return data;
 };
