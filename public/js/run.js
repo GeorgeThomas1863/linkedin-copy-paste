@@ -60,24 +60,33 @@ export const runPwToggle = async () => {
 };
 
 export const runAdvancedToggle = async () => {
-  const toggleButton = document.getElementById("advanced-options-toggle");
-  const advancedContent = document.getElementById("advanced-options-content");
-  const isExpanded = toggleButton.getAttribute("aria-expanded") === "true";
   const hideListItems = await getHideArray();
-  console.log("HIDE LIST ITEMS");
-  console.dir(hideListItems);
+  const toggleButton = document.getElementById("advanced-options-toggle");
+  const advancedOptionsListItem = document.getElementById("advanced-options-list-item");
+  const systemPromptListItem = document.getElementById("system-prompt-list-item");
 
-  if (isExpanded) {
-    // advancedContent.classList.remove("expanded");
+  //expanded to collapsed
+  if (toggleButton.getAttribute("aria-expanded") === "true") {
     await hideArray(hideListItems);
     toggleButton.setAttribute("aria-expanded", "false");
     toggleButton.classList.remove("expanded");
-  } else {
-    await unhideArray(hideListItems);
-    // advancedContent.classList.add("expanded");
-    toggleButton.setAttribute("aria-expanded", "true");
-    toggleButton.classList.add("expanded");
+    advancedOptionsListItem.style.borderBottom = "none";
+    advancedOptionsListItem.style.paddingBottom = "0";
+    systemPromptListItem.style.borderBottom = "none";
+    systemPromptListItem.style.paddingBottom = "0";
+    return true;
   }
+
+  //collapsed to expanded
+  await unhideArray(hideListItems);
+  toggleButton.setAttribute("aria-expanded", "true");
+  toggleButton.classList.add("expanded");
+  advancedOptionsListItem.style.borderBottom = "1px solid rgba(209, 213, 219, 0.6)";
+  advancedOptionsListItem.style.paddingBottom = "2rem";
+  systemPromptListItem.style.borderBottom = "1px solid rgba(209, 213, 219, 0.6)";
+  systemPromptListItem.style.paddingBottom = "2rem";
+
+  return true;
 };
 
 export const runPrettyToggle = async (clickId) => {

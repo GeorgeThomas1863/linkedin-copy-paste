@@ -200,6 +200,10 @@ li {
   color: #9ca3af;
 }
 
+#advanced-options-list-item {
+  transition: border-bottom 0.5s ease, padding-bottom 0.5s ease;
+}
+
 .toggle-wrapper {
   background: rgba(234, 235, 236, 0.9);
   border-radius: 8px;
@@ -224,30 +228,6 @@ li {
 .advanced-toggle-btn.expanded {
   transform: rotate(45deg);
 }
-
-/* FOR TRANSITION EASE ON HIDDEN / UNHIDDEN */
-/* #select-model-list-item,
-#max-tokens-list-item,
-#temperature-list-item,
-#system-prompt-list-item {
-  transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease;
-  max-height: 1000px;
-  overflow: hidden;
-}
-
-#select-model-list-item.hidden,
-#max-tokens-list-item.hidden,
-#temperature-list-item.hidden,
-#system-prompt-list-item.hidden {
-  display: block !important;
-  opacity: 0;
-  transform: translateY(-10px);
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  pointer-events: none;
-} */
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
