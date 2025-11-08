@@ -10,14 +10,14 @@ export const runAI = async (inputParams) => {
   console.log("RUN AI BACKEND INPUT PARAMS");
   console.dir(inputParams);
 
-  //build prompt based on post type
-  // const prompt = await buildPrompt(inputParams);
-  // if (!prompt) return null;
+  // build prompt based on post type
+  const prompt = await buildPrompt(inputParams);
+  if (!prompt) return null;
 
-  // const params = {
-  //   prompt: prompt,
-  //   model: model,
-  // };
+  const params = {
+    prompt: prompt,
+    model: model,
+  };
 
   // if (aiType === "perplexity") return await runPerplexity(params);
   // if (aiType === "chatgpt") return await runChatGPT(params);

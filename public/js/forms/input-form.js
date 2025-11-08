@@ -198,10 +198,10 @@ export const buildMaxTokensDiv = async () => {
   maxTokensInput.id = "max-tokens-input";
   maxTokensInput.className = "form-input";
   maxTokensInput.min = "1";
-  maxTokensInput.max = "4096";
+  maxTokensInput.max = "10000";
   maxTokensInput.step = "1";
-  maxTokensInput.value = "1000";
-  maxTokensInput.placeholder = "1000";
+  maxTokensInput.value = "500";
+  maxTokensInput.placeholder = "500";
 
   maxTokensDiv.append(maxTokensLabel, maxTokensInput);
 
