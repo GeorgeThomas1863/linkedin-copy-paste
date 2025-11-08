@@ -151,9 +151,9 @@ export const buildSelectModelListItem = async () => {
 
   //default to perplexity models, change to others with js
   const optionArray = [
-    { value: "sonar-pro", text: "Sonar Pro", selected: true },
-    { value: "sonar", text: "Sonar" },
-    { value: "sonar-pro-deep-research", text: "Sonar Pro Deep Research" },
+    { value: "medium", text: "Medium Quality Models" },
+    { value: "high", text: "High Quality Models (best / more expensive)" },
+    { value: "low", text: "Low Quality Models (less accurate / cheaper)" },
   ];
 
   for (let i = 0; i < optionArray.length; i++) {

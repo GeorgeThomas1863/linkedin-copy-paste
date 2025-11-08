@@ -1,4 +1,5 @@
 import { buildReturnForm } from "./forms/return-form.js";
+import { buildMainParams } from "./util/params.js";
 import { sendToBack } from "./util/api-front.js";
 import { hideArray, unhideArray, getHideArray } from "./util/collapse.js";
 import { EYE_OPEN_SVG, EYE_CLOSED_SVG, modelMap } from "./util/define-things.js";
@@ -18,13 +19,8 @@ export const runMainSubmit = async () => {
   const submitRoute = await sendToBack({ route: "/get-backend-value-route", key: "submitRoute" });
   if (!submitRoute) return null;
 
-  const params = {
-    route: submitRoute,
-    aiType: document.getElementById("ai-type-select").value,
-    model: document.getElementById("model-type-select").value,
-    postType: document.getElementById("post-type-select").value,
-    userInput: document.getElementById("user-input").value || null,
-  };
+  const params = await buildMainParams();
+  params.route = submitRoute;
 
   console.log("MAIN SUBMIT PARAMS");
   console.dir(params);

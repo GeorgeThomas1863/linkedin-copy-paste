@@ -19,8 +19,14 @@ export const EXPAND_OPTIONS_SVG = `
       <line class="horizontal-line" x1="5" y1="12" x2="19" y2="12" data-label="advancedToggle"></line>
     </svg>
   `;
-  
+
 export const modelMap = {
+  all: [
+    { value: "medium", text: "Medium Quality Models" },
+    { value: "high", text: "High Quality Models (best / more expensive)" },
+    { value: "low", text: "Low Quality Models (less accurate / cheaper)" },
+  ],
+
   perplexity: [
     { value: "sonar-pro", text: "Sonar Pro" },
     { value: "sonar", text: "Sonar" },

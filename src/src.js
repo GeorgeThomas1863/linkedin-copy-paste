@@ -11,20 +11,20 @@ export const runAI = async (inputParams) => {
   console.dir(inputParams);
 
   //build prompt based on post type
-  const prompt = await buildPrompt(inputParams);
-  if (!prompt) return null;
+  // const prompt = await buildPrompt(inputParams);
+  // if (!prompt) return null;
 
-  const params = {
-    prompt: prompt,
-    model: model,
-  };
+  // const params = {
+  //   prompt: prompt,
+  //   model: model,
+  // };
 
-  if (aiType === "perplexity") return await runPerplexity(params);
-  if (aiType === "chatgpt") return await runChatGPT(params);
-  if (aiType === "claude") return await runClaude(params);
-  if (aiType === "local-llm") return await runLocalLLM(params);
+  // if (aiType === "perplexity") return await runPerplexity(params);
+  // if (aiType === "chatgpt") return await runChatGPT(params);
+  // if (aiType === "claude") return await runClaude(params);
+  // if (aiType === "local-llm") return await runLocalLLM(params);
 
-  return null;
+  // return null;
 };
 
 //MAKE BETTER

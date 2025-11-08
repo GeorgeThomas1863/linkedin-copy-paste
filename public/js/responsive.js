@@ -44,7 +44,10 @@ export const keyHandler = async (e) => {
   console.log(keyId);
 
   if (keyId === "auth-pw-input") await runAuthSubmit();
-  //   if (keyId === "query-input") await runSearchSubmit();
+
+  if (!displayElement) return null;
+  await runMainSubmit();
+
   return true;
 };
 
