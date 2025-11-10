@@ -28,12 +28,48 @@ export const runAI = async (inputParams) => {
   if (aiType === "local-llm") return await runLocalLLM(params);
 };
 
+export const runAll = async (params) => {
+  const { model, prompt } = params;
+  const data = [];
+
+  const modelQualityMap = {
+    high: {
+      perplexity: "sonar-deep-research",
+      chatgpt: "gpt-5",
+      claude: "claude-sonnet-4-5",
+      ["local-llm"]: "local-llm",
+    },
+    medium: {
+      perplexity: "sonar-pro",
+      chatgpt: "gpt-5-mini",
+      claude: "claude-sonnet-4-5",
+      ["local-llm"]: "local-llm",
+    },
+    low: {
+      perplexity: "sonar",
+      chatgpt: "gpt-5-nano",
+      claude: "claude-opus-4-1",
+      ["local-llm"]: "local-llm",
+    },
+  };
+
+  const modelQuality = modelQualityMap[model];
+
+  data.push(await runPerplexity({ ...params, model: modelQuality.perplexity }));
+  data.push(await runChatGPT({ ...params, model: modelQuality.chatgpt }));
+  data.push(await runClaude({ ...params, model: modelQuality.claude }));
+  data.push(await runLocalLLM({ ...params, model: modelQuality["local-llm"] }));
+
+  return data;
+};
+
 //MAKE BETTER
 export const buildPrompt = async (inputParams) => {
   if (!inputParams) return null;
   const { postType, userInput, systemPrompt, aiType } = inputParams;
 
-  const promptArray = await getSystemPrompt(systemPrompt, aiType);
+  // const promptArray = await getSystemPrompt(systemPrompt, aiType);
+  const promptArray = [];
 
   let userPrompt = null;
   switch (postType) {
@@ -58,7 +94,7 @@ export const buildPrompt = async (inputParams) => {
 
 export const getSystemPrompt = async (systemPrompt, aiType) => {
   if (aiType === "claude") return [];
-  
+
   //default system prompt
   if (!systemPrompt) {
     return [{ role: "system", content: "You are a helpful assistant." }];
