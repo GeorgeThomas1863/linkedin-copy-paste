@@ -1,6 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
 import CONFIG from "../../config/config.js";
-import { buildPrompt } from "../src.js";
 
 const client = new Anthropic({
   apiKey: CONFIG.CLAUDE_API_KEY,
@@ -22,7 +21,7 @@ export const runClaude = async (inputParams) => {
         max_uses: 5, // Optional: limit number of searches
       },
     ],
-    messages: claudePrompt,
+    messages: prompt,
     max_tokens: +maxTokens,
     temperature: +temperature,
   });

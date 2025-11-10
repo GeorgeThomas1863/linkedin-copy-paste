@@ -54,7 +54,9 @@ export const runAll = async (params) => {
   };
 
   const claudePrompt = await buildPrompt({ ...params, aiType: "claude" });
-  if (!claudePrompt) return null;
+  console.log("CLAUDE PROMPT");
+  console.dir(claudePrompt);
+  // if (!claudePrompt) return null;
 
   const modelQuality = modelQualityMap[model];
 
