@@ -13,13 +13,6 @@ export const runClaude = async (inputParams) => {
   console.log("CLAUDE PARAMS");
   console.dir(inputParams);
 
-  //FIX SYSTEM HERE (needed for all type)
-  const claudePrompt = await buildPrompt(inputParams);
-  if (!claudePrompt) return null;
-
-  console.log("CLAUDE PROMPT");
-  console.dir(claudePrompt);
-
   const data = await client.messages.create({
     model: model,
     tools: [
