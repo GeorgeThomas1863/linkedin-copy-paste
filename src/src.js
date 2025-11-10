@@ -29,7 +29,7 @@ export const runAI = async (inputParams) => {
 };
 
 export const runAll = async (params) => {
-  const { model, prompt } = params;
+  const { model } = params;
   const data = [];
 
   const modelQualityMap = {
@@ -53,16 +53,11 @@ export const runAll = async (params) => {
     },
   };
 
-  const claudePrompt = await buildPrompt({ ...params, aiType: "claude" });
-  console.log("CLAUDE PROMPT");
-  console.dir(claudePrompt);
-  // if (!claudePrompt) return null;
-
   const modelQuality = modelQualityMap[model];
 
   data.push(await runPerplexity({ ...params, model: modelQuality.perplexity }));
   data.push(await runChatGPT({ ...params, model: modelQuality.chatgpt }));
-  data.push(await runClaude({ ...params, model: modelQuality.claude, prompt: claudePrompt }));
+  data.push(await runClaude({ ...params, model: modelQuality.claude }));
   data.push(await runLocalLLM({ ...params, model: modelQuality["local-llm"] }));
 
   return data;
@@ -98,7 +93,7 @@ export const buildPrompt = async (inputParams) => {
 };
 
 export const getSystemPrompt = async (systemPrompt, aiType) => {
-  if (aiType === "claude") return [];
+  if (aiType === "claude" || aiType === "all") return [];
 
   //default system prompt
   if (!systemPrompt) {
