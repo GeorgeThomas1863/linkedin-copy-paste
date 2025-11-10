@@ -68,8 +68,8 @@ export const buildPrompt = async (inputParams) => {
   if (!inputParams) return null;
   const { postType, userInput, systemPrompt, aiType } = inputParams;
 
-  // const promptArray = await getSystemPrompt(systemPrompt, aiType);
-  const promptArray = [];
+  const promptArray = await getSystemPrompt(systemPrompt, aiType);
+  // const promptArray = [];
 
   let userPrompt = null;
   switch (postType) {

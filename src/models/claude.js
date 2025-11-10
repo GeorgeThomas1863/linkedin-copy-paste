@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import CONFIG from "../../config/config.js";
+import { buildPrompt } from "../src.js";
 
 const client = new Anthropic({
   apiKey: CONFIG.CLAUDE_API_KEY,
@@ -12,6 +13,13 @@ export const runClaude = async (inputParams) => {
   console.log("CLAUDE PARAMS");
   console.dir(inputParams);
 
+  //FIX SYSTEM HERE (needed for all type)
+  const claudePrompt = await buildPrompt(inputParams);
+  if (!claudePrompt) return null;
+
+  console.log("CLAUDE PROMPT");
+  console.dir(claudePrompt);
+
   const data = await client.messages.create({
     model: model,
     tools: [
@@ -21,7 +29,7 @@ export const runClaude = async (inputParams) => {
         max_uses: 5, // Optional: limit number of searches
       },
     ],
-    messages: prompt,
+    messages: claudePrompt,
     max_tokens: +maxTokens,
     temperature: +temperature,
   });

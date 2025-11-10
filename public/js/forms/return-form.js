@@ -10,7 +10,6 @@ export const buildReturnForm = async (data) => {
   const returnWrapper = document.createElement("div");
   returnWrapper.id = "return-wrapper";
 
-  //ADD COPY PASTE ABILITY HERE
   const copyPasteArea = await buildCopyPasteArea(data);
   const makePrettyButtons = await buildMakePrettyButtons();
   const parseData = await buildParseData(data);
