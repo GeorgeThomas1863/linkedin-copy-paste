@@ -29,11 +29,14 @@ export const buildCopyPasteArea = async (data) => {
   copyPasteWrapper.id = "copy-paste-wrapper";
 
   for (const item of data) {
+    if (!item) continue;
     const { aiReturnType } = item;
-    if (!aiReturnType) continue;
 
-    const copyPasteText = await getCopyPasteText(data);
+    const copyPasteText = await getCopyPasteText(item);
     if (!copyPasteText) continue;
+
+    console.log("COPY PASTE TEXT");
+    console.log(copyPasteText);
 
     const copyPasteElement = await buildCopyPasteElement(copyPasteText, aiReturnType);
     if (!copyPasteElement) continue;
@@ -47,12 +50,11 @@ export const buildCopyPasteArea = async (data) => {
 export const getCopyPasteText = async (data) => {
   if (!data) return null;
   const { aiReturnType } = data;
-  if (!aiReturnType) return null;
 
   //for perplexity
   if (aiReturnType === "perplexity") return data.choices[0].message.content;
-  if (aiReturnType === "chatgpt") return data.output_text
-  if (aiReturnType === "claude") return data.content[0].text
+  if (aiReturnType === "chatgpt") return data.output_text;
+  if (aiReturnType === "claude") return data.content[0].text;
 
   return null;
 };
