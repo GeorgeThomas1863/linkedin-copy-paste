@@ -38,38 +38,19 @@ export const buildCopyPasteArea = async (data) => {
     copyPasteWrapper.append(copyPasteElement);
   }
 
-  // const copyPasteText = await getCopyPasteText(data);
-  // if (!copyPasteText) return null;
-
-  // const copyPasteElement = document.createElement("textarea");
-  // const copyPasteElement = document.createElement("div");
-  // copyPasteElement.contentEditable = "true";
-  // copyPasteElement.id = "copy-paste-element";
-  // // copyPasteElement.innerHTML = copyPasteText;
-  // copyPasteElement.textContent = copyPasteText;
-
-  // //add button to copy to clipboard
-  // const copyButton = document.createElement("button");
-  // copyButton.id = "copy-button";
-  // copyButton.textContent = "Copy Post";
-  // copyButton.className = "btn-submit";
-  // copyButton.setAttribute("data-label", "copy-return-data");
-
-  // copyPasteWrapper.append(copyPasteElement, copyButton);
   return copyPasteWrapper;
 };
 
 export const getCopyPasteText = async (data) => {
   if (!data) return null;
   const { aiReturnType } = data;
-  // console.log("AI RETURN TYPE");
-  // console.log(aiReturnType);
-  // console.dir(data);
+
+  const headerText = `AI Return From: ${aiReturnType}\n\n`;
 
   //for perplexity
-  if (aiReturnType === "perplexity") return data.choices[0].message.content;
-  if (aiReturnType === "chatgpt") return data.output_text;
-  if (aiReturnType === "claude") return data.content[0].text;
+  if (aiReturnType === "perplexity") return headerText + data.choices[0].message.content;
+  if (aiReturnType === "chatgpt") return headerText + data.output_text;
+  if (aiReturnType === "claude") return headerText + data.content[0].text;
 
   return null;
 };
@@ -129,10 +110,21 @@ export const buildParseData = async (data) => {
   const parseWrapper = document.createElement("div");
   parseWrapper.id = "parse-wrapper";
 
-  const parseData = document.createElement("div");
-  parseData.id = "parse-data";
-  parseData.innerHTML = JSON.stringify(data);
-  parseWrapper.append(parseData);
+  for (const item of data) {
+    const parseData = await getParseData(item);
+    if (!parseData) continue;
+
+    parseWrapper.append(parseData);
+  }
 
   return parseWrapper;
+};
+
+export const getParseData = async (item) => {
+  if (!item) return null;
+
+  const parseData = document.createElement("div");
+  parseData.id = "parse-data";
+  parseData.innerHTML = JSON.stringify(item);
+  return parseData;
 };
