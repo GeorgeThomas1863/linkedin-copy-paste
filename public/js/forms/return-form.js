@@ -21,13 +21,65 @@ export const buildReturnForm = async (data) => {
 
 export const buildCopyPasteArea = async (data) => {
   if (!data) return null;
-  const copyPasteText = await getCopyPasteText(data);
-  if (!copyPasteText) return null;
+
+  console.log("BUILD COPY PASTE AREA DATA");
+  console.dir(data);
 
   const copyPasteWrapper = document.createElement("div");
   copyPasteWrapper.id = "copy-paste-wrapper";
 
+  for (const item of data) {
+    const copyPasteText = await getCopyPasteText(item);
+    if (!copyPasteText) continue;
+
+    const copyPasteElement = await buildCopyPasteElement(copyPasteText);
+    if (!copyPasteElement) continue;
+
+    copyPasteWrapper.append(copyPasteElement);
+  }
+
+  // const copyPasteText = await getCopyPasteText(data);
+  // if (!copyPasteText) return null;
+
   // const copyPasteElement = document.createElement("textarea");
+  // const copyPasteElement = document.createElement("div");
+  // copyPasteElement.contentEditable = "true";
+  // copyPasteElement.id = "copy-paste-element";
+  // // copyPasteElement.innerHTML = copyPasteText;
+  // copyPasteElement.textContent = copyPasteText;
+
+  // //add button to copy to clipboard
+  // const copyButton = document.createElement("button");
+  // copyButton.id = "copy-button";
+  // copyButton.textContent = "Copy Post";
+  // copyButton.className = "btn-submit";
+  // copyButton.setAttribute("data-label", "copy-return-data");
+
+  // copyPasteWrapper.append(copyPasteElement, copyButton);
+  return copyPasteWrapper;
+};
+
+export const getCopyPasteText = async (data) => {
+  if (!data) return null;
+  const { aiReturnType } = data;
+  // console.log("AI RETURN TYPE");
+  // console.log(aiReturnType);
+  // console.dir(data);
+
+  //for perplexity
+  if (aiReturnType === "perplexity") return data.choices[0].message.content;
+  if (aiReturnType === "chatgpt") return data.output_text;
+  if (aiReturnType === "claude") return data.content[0].text;
+
+  return null;
+};
+
+export const buildCopyPasteElement = async (copyPasteText) => {
+  if (!copyPasteText) return null;
+
+  const copyPasteElementWrapper = document.createElement("div");
+  copyPasteElementWrapper.id = "copy-paste-element-wrapper";
+
   const copyPasteElement = document.createElement("div");
   copyPasteElement.contentEditable = "true";
   copyPasteElement.id = "copy-paste-element";
@@ -41,23 +93,8 @@ export const buildCopyPasteArea = async (data) => {
   copyButton.className = "btn-submit";
   copyButton.setAttribute("data-label", "copy-return-data");
 
-  copyPasteWrapper.append(copyPasteElement, copyButton);
-  return copyPasteWrapper;
-};
-
-export const getCopyPasteText = async (data) => {
-  if (!data) return null;
-  const { aiReturnType } = data;
-  console.log("AI RETURN TYPE");
-  console.log(aiReturnType);
-  console.dir(data);
-
-  //for perplexity
-  if (aiReturnType === "perplexity") return data.choices[0].message.content;
-  if (aiReturnType === "chatgpt") return data.output_text;
-  if (aiReturnType === "claude") return data.content[0].text;
-
-  return null;
+  copyPasteElementWrapper.append(copyPasteElement, copyButton);
+  return copyPasteElementWrapper;
 };
 
 export const buildMakePrettyButtons = async () => {
