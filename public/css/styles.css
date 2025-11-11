@@ -260,6 +260,32 @@ h3 {
   transform: rotate(45deg);
 }
 
+/* +++++++++++++++++++++++++++++++++++ */
+
+/* ----------------------------------- */
+/* WAIT FORM STYLES */
+/* ------------------------------------- */
+
+#wait-wrapper {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+#wait-text {
+  font-size: 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* ----------------------------------- */

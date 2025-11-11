@@ -1,1 +1,153 @@
-/* build */
+/* ----------------------------------- */
+/* CLAUDE PROVIDED MEDIA RESPONSIVE STYLES */
+/* ------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  /* Reduce margins and padding */
+  #auth-form-wrapper,
+  #input-form-wrapper {
+    margin: 1.5rem 1rem;
+    max-width: 100%;
+  }
+
+  #return-wrapper {
+    padding: 0 1rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+  }
+
+  /* Adjust form padding */
+  .form-list-item,
+  #auth-pw-list-item {
+    padding: 1.5rem;
+  }
+
+  #button-list-item {
+    padding: 1rem 1.5rem;
+  }
+
+  /* Stack token/temp side by side inputs vertically */
+  #token-temp-list-item {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Adjust heading sizes */
+  h3 {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .form-title {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Adjust copy paste area */
+  #copy-paste-element,
+  #parse-data {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  #header-text {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust button sizes */
+  #copy-button {
+    width: 90%;
+  }
+
+  #form-submit-button {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+  /* Wait wrapper */
+  #wait-wrapper {
+    max-width: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  #wait-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further reduce spacing for small phones */
+  #auth-form-wrapper,
+  #input-form-wrapper {
+    margin: 1rem 0.5rem;
+  }
+
+  #return-wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .form-list-item,
+  #auth-pw-list-item {
+    padding: 1rem;
+  }
+
+  #button-list-item {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Smaller headings */
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  #auth-label {
+    font-size: 1rem;
+  }
+
+  /* Adjust font sizes */
+  .form-label {
+    font-size: 0.85rem;
+  }
+
+  #wait-wrapper {
+    padding: 1rem;
+    margin: 0.75rem;
+  }
+
+  #wait-text {
+    font-size: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .form-control,
+  .form-select,
+  .form-input,
+  .form-textarea,
+  .password-input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .password-input {
+    padding-right: 40px;
+  }
+
+  /* Copy paste area adjustments */
+  #copy-paste-element,
+  #parse-data {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  #header-text {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  #copy-button {
+    width: 95%;
+  }
+}

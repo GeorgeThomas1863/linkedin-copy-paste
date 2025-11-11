@@ -1,4 +1,5 @@
 import { buildReturnForm } from "./forms/return-form.js";
+import { buildWaitForm } from "./forms/wait-form.js";
 import { buildMainParams } from "./util/params.js";
 import { sendToBack } from "./util/api-front.js";
 import { hideArray, unhideArray, getHideArray } from "./util/collapse.js";
@@ -21,6 +22,8 @@ export const runMainSubmit = async () => {
 
   const params = await buildMainParams();
   params.route = submitRoute;
+
+  await buildWaitForm();
 
   console.log("MAIN SUBMIT PARAMS");
   console.dir(params);
