@@ -4,6 +4,14 @@ export const buildInputForm = async () => {
   const inputFormWrapper = document.createElement("div");
   inputFormWrapper.id = "input-form-wrapper";
 
+  const inputTitleElement = document.createElement("h2");
+  inputTitleElement.textContent = "Customize Post Below (fuck you LinkedIn)";
+  inputTitleElement.className = "form-title";
+
+  const inputFormElement = document.createElement("div");
+  inputFormElement.id = "input-form-element";
+  inputFormElement.className = "form-element";
+
   const selectAIListItem = await buildSelectAIListItem();
   const postTypeListItem = await buildPostTypeListItem();
   const advancedOptionsListItem = await buildAdvancedOptionsListItem();
@@ -17,18 +25,18 @@ export const buildInputForm = async () => {
   // const temperatureListItem = await buildTemperatureListItem();
   const systemPromptListItem = await buildSystemPromptListItem();
 
-  inputFormWrapper.append(
+  inputFormElement.append(
     selectAIListItem,
     postTypeListItem,
     advancedOptionsListItem,
     selectModelListItem,
     tokenTempListItem,
-    // maxTokensListItem,
-    // temperatureListItem,
     systemPromptListItem,
     userInputListItem,
     buttonListItem
   );
+
+  inputFormWrapper.append(inputTitleElement, inputFormElement);
 
   return inputFormWrapper;
 };

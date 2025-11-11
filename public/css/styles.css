@@ -4,19 +4,12 @@
 
 /* MAIN DEFAULT STYLES */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #fafbfc;
-  min-height: 100vh;
-  padding: 48px 20px;
   color: #1a1a1a;
   line-height: 1.5;
+  box-sizing: border-box;
 }
 
 #background-pic {
@@ -70,7 +63,7 @@ h3 {
 
 #auth-form-wrapper {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 3rem auto;
   background: #ffffff;
   /* backdrop-filter: blur(16px); */
   border-radius: 12px;
@@ -112,18 +105,37 @@ h3 {
 /* ------------------------------------- */
 
 #input-form-wrapper {
+  margin: 3rem auto;
   max-width: 720px;
-  margin: 0 auto;
+  display: flex;
   background: #ffffff;
+  flex-direction: column;
+  gap: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+#input-form-element {
+  width: 100%;
+  margin: 0 auto;
+  /* margin-top: 3rem; */
+}
+
+.form-title {
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  padding-bottom: 0;
+}
+
 .form-list-item {
   padding: 2rem;
   padding-bottom: 0;
+}
+
+.form-list-item:first-child {
+  padding-top: 0;
 }
 
 #token-temp-list-item {

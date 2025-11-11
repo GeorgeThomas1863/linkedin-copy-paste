@@ -25,8 +25,8 @@ export const buildCopyPasteArea = async (data) => {
   console.log("BUILD COPY PASTE AREA DATA");
   console.dir(data);
 
-  const copyPasteWrapper = document.createElement("div");
-  copyPasteWrapper.id = "copy-paste-wrapper";
+  const copyPasteAreaWrapper = document.createElement("div");
+  copyPasteAreaWrapper.id = "copy-paste-area-wrapper";
 
   for (const item of data) {
     if (!item) continue;
@@ -41,10 +41,10 @@ export const buildCopyPasteArea = async (data) => {
     const copyPasteElement = await buildCopyPasteElement(copyPasteText, aiReturnType);
     if (!copyPasteElement) continue;
 
-    copyPasteWrapper.append(copyPasteElement);
+    copyPasteAreaWrapper.append(copyPasteElement);
   }
 
-  return copyPasteWrapper;
+  return copyPasteAreaWrapper;
 };
 
 export const getCopyPasteText = async (data) => {
@@ -63,7 +63,7 @@ export const buildCopyPasteElement = async (copyPasteText, aiReturnType) => {
   if (!copyPasteText || !aiReturnType) return null;
 
   const copyPasteElementWrapper = document.createElement("div");
-  copyPasteElementWrapper.id = "copy-paste-element-wrapper";
+  copyPasteElementWrapper.id = "copy-paste-wrapper";
 
   const headerTextElement = document.createElement("div");
   headerTextElement.id = "header-text";
@@ -72,7 +72,6 @@ export const buildCopyPasteElement = async (copyPasteText, aiReturnType) => {
   const copyPasteElement = document.createElement("div");
   copyPasteElement.contentEditable = "true";
   copyPasteElement.id = "copy-paste-element";
-  // copyPasteElement.innerHTML = copyPasteText;
   copyPasteElement.textContent = copyPasteText;
 
   //add button to copy to clipboard
@@ -87,7 +86,6 @@ export const buildCopyPasteElement = async (copyPasteText, aiReturnType) => {
 };
 
 export const buildMakePrettyButtons = async () => {
-  //check if already built
   const checkButton = document.getElementById("button-wrapper");
   if (checkButton) return checkButton;
 
