@@ -32,7 +32,7 @@ export const buildCopyPasteArea = async (data) => {
     const { aiReturnType } = item;
     if (!aiReturnType) continue;
 
-    const copyPasteText = await getCopyPasteText(aiReturnType);
+    const copyPasteText = await getCopyPasteText(data);
     if (!copyPasteText) continue;
 
     const copyPasteElement = await buildCopyPasteElement(copyPasteText, aiReturnType);
@@ -44,13 +44,15 @@ export const buildCopyPasteArea = async (data) => {
   return copyPasteWrapper;
 };
 
-export const getCopyPasteText = async (aiReturnType) => {
-
+export const getCopyPasteText = async (data) => {
+  if (!data) return null;
+  const { aiReturnType } = data;
+  if (!aiReturnType) return null;
 
   //for perplexity
   if (aiReturnType === "perplexity") return data.choices[0].message.content;
-  if (aiReturnType === "chatgpt") return data.output_text;
-  if (aiReturnType === "claude") return data.content[0].text;
+  if (aiReturnType === "chatgpt") return data.output_text
+  if (aiReturnType === "claude") return data.content[0].text
 
   return null;
 };
