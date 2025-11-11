@@ -116,12 +116,21 @@ export const buildParseData = async (data) => {
   const parseWrapper = document.createElement("div");
   parseWrapper.id = "parse-wrapper";
 
-  for (const item of data) {
-    const parseData = await getParseData(item);
-    if (!parseData) continue;
-
-    parseWrapper.append(parseData);
+  let itemText = "";
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    if (!item) continue;
+    if (i === 0) rawText = "[";
+    itemText += JSON.stringify(item) + ",";
   }
+  itemText += "]";
+
+  const parseText = await getParseData(itemText);
+
+  const parseData = document.createElement("div");
+  parseData.id = "parse-data";
+  parseData.innerHTML = parseText;
+  parseWrapper.append(parseData);
 
   return parseWrapper;
 };

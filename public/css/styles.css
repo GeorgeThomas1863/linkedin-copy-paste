@@ -159,6 +159,7 @@ h3 {
 }
 
 #button-list-item {
+  margin-top: 1rem;
   padding: 1rem 2rem;
 }
 
@@ -298,7 +299,7 @@ h3 {
 
 #header-text {
   width: 100%;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
   padding: 1rem 2rem;
   background: #f3f4f6;
@@ -318,9 +319,17 @@ h3 {
   border-radius: 0 0 12px 12px;
 }
 
+#copy-button {
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  padding: 1.1rem;
+  justify-content: center;
+  width: 80%;
+  text-align: center;
+}
+
 #parse-data {
-  max-width: 1500px;
-  width: 100%;
+  width: 99%;
   margin: 0 auto;
   padding: 2rem;
   padding-top: 1rem;
@@ -330,15 +339,7 @@ h3 {
   font-weight: 400;
   word-break: break-all;
   font-family: "Courier New", monospace;
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); */
-}
-
-#copy-button {
-  margin: 0 auto;
-  margin-bottom: 0.5rem;
-  justify-content: center;
-  width: 80%;
-  text-align: center;
+  border-radius: 12px;
 }
 
 .pretty-button {
