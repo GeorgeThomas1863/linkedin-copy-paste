@@ -120,26 +120,17 @@ export const buildParseData = async (data) => {
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
     if (!item) continue;
-    if (i === 0) rawText = "[";
+    if (i === 0) itemText = "[";
     itemText += JSON.stringify(item) + ",";
   }
+  itemText = itemText.slice(0, -1);
   itemText += "]";
-
-  const parseText = await getParseData(itemText);
 
   const parseData = document.createElement("div");
   parseData.id = "parse-data";
-  parseData.innerHTML = parseText;
+  parseData.innerHTML = itemText;
   parseWrapper.append(parseData);
 
   return parseWrapper;
 };
 
-export const getParseData = async (item) => {
-  if (!item) return null;
-
-  const parseData = document.createElement("div");
-  parseData.id = "parse-data";
-  parseData.innerHTML = JSON.stringify(item);
-  return parseData;
-};
