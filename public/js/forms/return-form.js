@@ -35,8 +35,8 @@ export const buildCopyPasteArea = async (data) => {
     const copyPasteText = await getCopyPasteText(item);
     if (!copyPasteText) continue;
 
-    console.log("COPY PASTE TEXT");
-    console.log(copyPasteText);
+    // console.log("COPY PASTE TEXT");
+    // console.log(copyPasteText);
 
     const copyPasteElement = await buildCopyPasteElement(copyPasteText, aiReturnType);
     if (!copyPasteElement) continue;
@@ -63,7 +63,7 @@ export const buildCopyPasteElement = async (copyPasteText, aiReturnType) => {
   if (!copyPasteText || !aiReturnType) return null;
 
   const copyPasteElementWrapper = document.createElement("div");
-  copyPasteElementWrapper.id = "copy-paste-wrapper";
+  copyPasteElementWrapper.className = "copy-paste-wrapper";
 
   const headerTextElement = document.createElement("div");
   headerTextElement.id = "header-text";
