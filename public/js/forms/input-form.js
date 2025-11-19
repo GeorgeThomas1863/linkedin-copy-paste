@@ -95,9 +95,9 @@ export const buildPostTypeListItem = async () => {
   postTypeSelect.setAttribute("data-label", "post-type-select");
 
   const optionArray = [
-    { value: "user-input", text: "User Input", selected: true },
-    { value: "cybersecurity-news", text: "Cybersecurity News [Default Prompt]" },
+    { value: "cybersecurity-news", text: "Cybersecurity News [Default Prompt]", selected: true },
     { value: "foreign-policy-news", text: "Foreign Policy News [Default Prompt]" },
+    { value: "user-input", text: "User Input" },
   ];
 
   for (let i = 0; i < optionArray.length; i++) {
@@ -267,6 +267,7 @@ export const buildUserInputListItem = async () => {
   const userInputListItem = document.createElement("li");
   userInputListItem.id = "user-input-list-item";
   userInputListItem.className = "form-list-item";
+  userInputListItem.classList.add("hidden");
 
   const userInputLabel = document.createElement("label");
   userInputLabel.setAttribute("for", "user-input");
