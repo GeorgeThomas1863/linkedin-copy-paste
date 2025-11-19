@@ -74,11 +74,11 @@ export const buildPrompt = async (inputParams) => {
   let userPrompt = null;
   switch (postType) {
     case "cybersecurity-news":
-      userPrompt = await getCybersecurityNewsPrompt();
+      userPrompt = await buildCybersecurityNewsPrompt();
       break;
 
     case "foreign-policy-news":
-      userPrompt = await getForeignPolicyNewsPrompt();
+      userPrompt = await buildForeignPolicyNewsPrompt();
       break;
 
     case "user-input":
@@ -103,65 +103,32 @@ export const getSystemPrompt = async (systemPrompt, aiType) => {
   return [{ role: "system", content: systemPrompt }];
 };
 
-export const getCybersecurityNewsPrompt = async () => {
-  const prompt = `You are a cybersecurity news research assistant that scans the open web in real time to find the single most important and interesting cybersecurity news story from the past 24 hours.
+export const buildCybersecurityNewsPrompt = async () => {
+  const prompt = `##Background: You are a writer and a cybersecurity expert. Your job is to search the open internet in real time and find the single most important and interesting cybersecurity news story from the past 24 hours. Then write 3-4 sharp, concise sentences about the news story you found, describing the main point and why it is important. The sentences should be professional, but engaging, and written in a tone similar to posts found on LinkedIn. 
 
-Your task is to:
+  ##Instructions: 
+- First, search the latest web sources (credible cybersecurity outlets, major tech and security news sites, CERT advisories, vendor blogs, and government alerts) to identify the BEST cybersecurity news story about a recent cybersecurity incident, vulnerability, policy development, or major breach that has occurred or been reported within the last 24 hours. When choosing the best cybersecurity news story give more weight to legitimate nation state or cyber criminal activity, not to hype or speculation about random trends, and try to find articles that contain original primary source information and analysis. 
+- Second, write 3-4 GOOD sentences that summarizes the information in the news story. Your sentences should follow the following basic outline: First sentence gives a broad overview of event and highlights the main reason why it matters. Next 2-3 sentences summarize the news story concisely and factually.  Use specific names, companies, malware, CVE numbers, or agencies if available. The writing should be professional, and in a tone commonly found on LinkedIn.
+- Third, at the end of your sentences please provide a link to the news story you chose and are summarizing. Again try to find original information from reliable primary sources or trusted security publications. 
 
-Search the latest web sources (credible cybersecurity outlets, major tech and security news sites, CERT advisories, vendor blogs, and government alerts) to identify a recent cybersecurity incident, vulnerability, policy development, or major breach that has occurred or been reported within the last 24 hours.
-
-Assess significance and impact — choose the story that best meets at least one of the following criteria:
-
- - **Is interesting and relevant to cybersecurity professionals. [Weight this significantly more than the other criteria.]**
-
-- **Reveals a major breach, ransomware campaign, or threat actor activity.**
-
-- **Involves a critical vulnerability with broad industry impact.**
-
-- **Reflects a major government, law enforcement, or regulatory action in cybersecurity.**
-
-- **Introduces a notable advancement or discovery in cybersecurity research or threat detection.**
-
-- **Has strategic or economic implications for organizations or the cybersecurity field as a whole.**
-
-- **Give more weight to legitimate nation state or cyber criminal activity, not to hype or speculation about random trends.**
-
-For your response do the following:
-
-- Summarize information concisely and factually about the news story. Use specific names, companies, malware, CVE numbers, or agencies if available.
-
-- Start with a one-sentence headline capturing the core event.
-
-- Follow with a 2–3 sentence summary explaining what happened, who/what was affected, and why it matters. 
-[When explaining why it matters focus on why the story is important to cybersecurity professionals, policymakers, or the general public (e.g., impact on data security, implications for global cyber policy, emerging threat trends, etc.).]
-
--End with a link to a news article about the incident. The article should be about your selection, not about anything else. 
-
-Your response should be in a concise narrative format, and be a total of 4 sentences or less (followed by a link).
-
-Your response should also adhere to the following rules: 
-
+##Rules:  
+Your response MUST adhere to the following rules: 
 - Never use emojis or any non-text characters in your response
-- NEVER reference or repeat anything about the prompt or reference that this is a prompt or question in your response. 
+- NEVER reference or repeat anything about the prompt or reference that this is a prompt or question in your response. Do not say “this matters because” (or similar), simply describe why it matters. 
 - Never use any markdown formatting in your response (this includes bolding, italics, underlining, etc.)
 - Never use any HTML tags, code blocks, lists, or images in your response
-- Never list out the citations for specific sentences in your response. 
-- Never list out or reference any part of this prompt or questions you are asked in your response.
-- Maintain a professional tone suitable for LinkedIn.
-- Use clear, concise language.
+- Never list out the citations for specific sentences in your response, or include any citations. 
 - Avoid hype, speculation, or marketing tone.
 - Focus on factual accuracy and insight value.
 - Never chose stories that are rumors or speculation. Always use primary sources or original reporting from reliable outlets such as: KrebsOnSecurity, Public Service Announcements on IC3.gov,The Hacker News, BleepingComputer, DarkReading, SecurityWeek, Recorded Future, CyberScoop, CISA advisories, Major tech media (e.g., Wired, TechCrunch, Reuters Tech, Bloomberg Tech).
-
-If multiple stories are equally important, select only one — whichever has the broadest impact or most unique insight for professionals.
-
-To repeat, the story you pick must be less than 24 hours old at the time of retrieval.`;
+- If multiple stories are equally important, select only one — whichever has the broadest impact or most unique insight for cybersecurity professionals.
+`;
 
   return prompt;
 };
 
 //MAKE LESS STUPID
-export const getForeignPolicyNewsPrompt = async () => {
+export const buildForeignPolicyNewsPrompt = async () => {
   const prompt = `You are a foreign policy expert. Please write 3-4 sentences on relevant foreign policy news.`;
   return prompt;
 };
