@@ -208,8 +208,8 @@ export const buildMaxTokensDiv = async () => {
   maxTokensInput.min = "1";
   maxTokensInput.max = "10000";
   maxTokensInput.step = "1";
-  maxTokensInput.value = "1000";
-  maxTokensInput.placeholder = "1000";
+  maxTokensInput.value = "2000";
+  maxTokensInput.placeholder = "2000";
 
   maxTokensDiv.append(maxTokensLabel, maxTokensInput);
 
