@@ -1,3 +1,5 @@
+import { parsePerplexityReturn, parseChatGPTReturn, parseClaudeReturn, parseLocalLLMReturn } from "../util/parse-ai.js";
+
 const displayElement = document.getElementById("display-element");
 
 export const buildReturnForm = async (data) => {
@@ -52,10 +54,14 @@ export const getCopyPasteText = async (data) => {
   const { aiReturnType } = data;
 
   //for perplexity
-  if (aiReturnType === "perplexity") return data.choices[0].message.content;
-  if (aiReturnType === "chatgpt") return data.output_text;
-  if (aiReturnType === "claude") return data.content[0].text;
+  // if (aiReturnType === "perplexity") return data.choices[0].message.content;
+  // if (aiReturnType === "chatgpt") return data.output_text;
+  // if (aiReturnType === "claude") return data.content[0].text;
 
+  if (aiReturnType === "perplexity") return await parsePerplexityReturn(data);
+  if (aiReturnType === "chatgpt") return await parseChatGPTReturn(data);
+  if (aiReturnType === "claude") return await parseClaudeReturn(data);
+  if (aiReturnType === "local-llm") return await parseLocalLLMReturn(data);
   return null;
 };
 
@@ -133,4 +139,3 @@ export const buildParseData = async (data) => {
 
   return parseWrapper;
 };
-
